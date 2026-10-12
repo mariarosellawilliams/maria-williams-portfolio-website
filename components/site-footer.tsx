@@ -23,16 +23,27 @@ export function SiteFooter() {
             <a href={profile.phoneHref} className="text-sm transition-colors hover:text-primary">
               {profile.phone}
             </a>
-            {profile.socials.map((s) => (
-              <a key={s.href} href={s.href} target="_blank" rel="noreferrer" className="text-sm hover:text-primary">
-                {s.label}
-              </a>
-            ))}
+          </div>
+          <div className="flex flex-col gap-2">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-background/60">Social</p>
+            {profile.socials.map((s) =>
+              s.href ? (
+                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="text-sm hover:text-primary">
+                  {s.label}
+                  {s.handle && <span className="text-background/60"> {s.handle}</span>}
+                </a>
+              ) : (
+                <span key={s.label} className="text-sm text-background/50">
+                  {s.label} — coming soon
+                </span>
+              ),
+            )}
           </div>
           <nav aria-label="Footer" className="flex flex-col gap-2">
             <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-background/60">Explore</p>
             <Link href="/" className="text-sm hover:text-primary">Home</Link>
             <Link href="/portfolio" className="text-sm hover:text-primary">Portfolio & Credits</Link>
+            <Link href="/portfolio#resume" className="text-sm hover:text-primary">Résumé</Link>
             <Link href="/contact" className="text-sm hover:text-primary">Booking Inquiries</Link>
           </nav>
         </div>

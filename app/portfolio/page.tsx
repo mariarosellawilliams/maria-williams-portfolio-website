@@ -4,6 +4,7 @@ import { PortfolioGallery } from '@/components/portfolio/portfolio-gallery'
 import { CreditsList } from '@/components/portfolio/credits-list'
 import { ProfessionalDetails } from '@/components/portfolio/professional-details'
 import { BookingCta } from '@/components/booking-cta'
+import { ResumeSection } from '@/components/portfolio/resume-section'
 import { projects } from '@/lib/content'
 
 export const metadata: Metadata = {
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 const jumpLinks = [
   { href: '#portfolio', label: 'Portfolio' },
   { href: '#credits', label: 'Credits' },
+  { href: '#resume', label: 'Résumé' },
   { href: '#details', label: 'Details' },
 ]
 
@@ -63,6 +65,7 @@ export default function PortfolioPage() {
         </div>
       </section>
 
+      <ResumeSection />
       <ProfessionalDetails />
       <BookingCta />
     </>

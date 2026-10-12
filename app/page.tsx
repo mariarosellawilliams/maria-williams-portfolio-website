@@ -3,6 +3,7 @@ import { SelectedWork } from '@/components/home/selected-work'
 import { About } from '@/components/home/about'
 import { SelectedCredits } from '@/components/home/selected-credits'
 import { BookingCta } from '@/components/booking-cta'
+import { SocialStrip } from '@/components/social-links'
 
 export default function HomePage() {
   return (
@@ -11,6 +12,7 @@ export default function HomePage() {
       <SelectedWork />
       <About />
       <SelectedCredits />
+      <SocialStrip />
       <BookingCta />
     </>
   )

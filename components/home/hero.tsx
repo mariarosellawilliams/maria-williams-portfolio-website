@@ -33,6 +33,13 @@ export function Hero() {
               Booking Inquiries
             </Link>
           </div>
+          <Link
+            href="/portfolio#resume"
+            className="group flex w-fit items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary"
+          >
+            <span className="h-px w-8 bg-primary transition-all group-hover:w-12" aria-hidden />
+            View My Résumé
+          </Link>
         </div>
 
         <div className="relative lg:w-5/12">

@@ -9,8 +9,14 @@ import { cn } from '@/lib/utils'
 const nav = [
   { href: '/', label: 'Home' },
   { href: '/portfolio', label: 'Portfolio & Credits' },
+  { href: '/portfolio#resume', label: 'Résumé' },
   { href: '/contact', label: 'Contact' },
 ]
+
+function isActive(href: string, pathname: string) {
+  if (href.includes('#')) return false
+  return href === '/' ? pathname === '/' : pathname.startsWith(href)
+}
 
 export function SiteHeader() {
   const pathname = usePathname()
@@ -30,7 +36,7 @@ export function SiteHeader() {
 
         <nav aria-label="Main" className="hidden items-center gap-8 md:flex">
           {nav.map((item) => {
-            const active = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href)
+            const active = isActive(item.href, pathname)
             return (
               <Link
                 key={item.href}
@@ -72,7 +78,7 @@ export function SiteHeader() {
           className="flex flex-col gap-1 border-t bg-background px-5 pb-8 pt-4 motion-safe:animate-in motion-safe:fade-in md:hidden"
         >
           {nav.map((item) => {
-            const active = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href)
+            const active = isActive(item.href, pathname)
             return (
               <Link
                 key={item.href}

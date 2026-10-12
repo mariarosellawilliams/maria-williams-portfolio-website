@@ -1,4 +1,4 @@
-import { Download } from 'lucide-react'
+import { FileText } from 'lucide-react'
 import { SectionLabel } from '@/components/section-label'
 import { details, petTalent, profile, strengths, training } from '@/lib/content'
 
@@ -12,12 +12,11 @@ export function ProfessionalDetails() {
             At a <span className="italic text-primary">glance</span>
           </h2>
           <a
-            href={profile.resumeUrl}
-            download
-            className="flex w-fit items-center gap-3 bg-primary px-6 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary-foreground transition-colors hover:bg-foreground"
+            href="#resume"
+            className="flex w-fit items-center gap-3 border border-foreground px-6 py-4 text-xs font-semibold uppercase tracking-[0.2em] transition-colors hover:border-primary hover:text-primary"
           >
-            <Download className="size-4" aria-hidden />
-            Download résumé (PDF)
+            <FileText className="size-4" aria-hidden />
+            View résumés
           </a>
         </div>
 

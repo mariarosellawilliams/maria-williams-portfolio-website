@@ -59,9 +59,14 @@ export const profile = {
     'Maria Williams is a Los Angeles-based model, dancer, and creative talent working across fashion, beauty, fragrance, lifestyle, streetwear, runway, branded campaigns, music videos, and on-camera performance.',
     'Her movement background through the USC Kaufman School of Dance brings ease, control, and storytelling to every frame — on set, on the runway, and in front of the camera.',
   ],
-  resumeUrl: '/maria-williams-modeling-resume.pdf',
-  /** Add social profiles here, e.g. { label: 'Instagram', href: 'https://instagram.com/...' } */
-  socials: [] as { label: string; href: string }[],
+  /**
+   * Social profiles. Set `href` to the full profile URL and `handle` to the
+   * username (e.g. '@mariarosella'). Leave `href: null` to show a placeholder.
+   */
+  socials: [
+    { label: 'Instagram', handle: null, href: null },
+    { label: 'TikTok', handle: null, href: null },
+  ] as { label: 'Instagram' | 'TikTok'; handle: string | null; href: string | null }[],
   heroPhoto: {
     id: 'hero',
     src: null,
@@ -77,6 +82,36 @@ export const profile = {
     focus: '50% 30%',
   } satisfies Photo as Photo,
 }
+
+/**
+ * Résumé PDFs. To replace a file, drop the new PDF into /public and update `src`
+ * (or overwrite the existing file with the same name). Leave `src: null` to show
+ * a placeholder with disabled buttons until the PDF is uploaded.
+ */
+export type Resume = {
+  id: string
+  tab: string
+  heading: string
+  src: string | null
+  fileName: string
+}
+
+export const resumes: Resume[] = [
+  {
+    id: 'modeling',
+    tab: 'Modeling',
+    heading: 'Modeling Résumé',
+    src: '/maria-williams-modeling-resume.pdf',
+    fileName: 'Maria-Williams-Modeling-Resume.pdf',
+  },
+  {
+    id: 'professional',
+    tab: 'Professional',
+    heading: 'Professional Résumé',
+    src: null,
+    fileName: 'Maria-Williams-Professional-Resume.pdf',
+  },
+]
 
 export const details: { label: string; value: string }[] = [
   { label: 'Height', value: `5'3"` },
