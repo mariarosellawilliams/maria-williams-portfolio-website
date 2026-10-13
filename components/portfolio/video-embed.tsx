@@ -21,9 +21,11 @@ export function VideoEmbed({ video }: { video: ProjectVideo }) {
   }
 
   if (video.provider === 'file') {
+    const [w, h] = video.aspect.split('/').map(Number)
+    const portrait = h > w
     return (
       <div
-        className="mx-auto w-full max-w-sm overflow-hidden border border-foreground/15 bg-secondary"
+        className={`mx-auto w-full overflow-hidden border border-foreground/15 bg-secondary ${portrait ? 'max-w-sm' : ''}`}
         style={{ aspectRatio: video.aspect }}
       >
         <video
@@ -34,7 +36,8 @@ export function VideoEmbed({ video }: { video: ProjectVideo }) {
           aria-label={video.title}
           className="block size-full object-cover"
         >
-          <source src={video.src} type="video/mp4" />
+          {/* #t=0.1 makes Safari paint the first frame when there is no poster */}
+          <source src={video.poster ? video.src : `${video.src}#t=0.1`} type="video/mp4" />
         </video>
       </div>
     )

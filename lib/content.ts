@@ -50,6 +50,8 @@ export type Project = {
   collaborators?: { label: string; name: string }[]
   links?: { label: string; href: string }[]
   video?: ProjectVideo
+  /** Short self-hosted clips shown under the main video, in place of stills. */
+  clips?: Extract<ProjectVideo, { provider: 'file' }>[]
   photos: Photo[]
 }
 
@@ -365,35 +367,12 @@ export const projects: Project[] = [
   featuredCredit: true,
   links: [{ label: 'Watch on YouTube', href: 'https://youtu.be/OOdoiz4AOzw' }],
   video: { provider: 'youtube', id: 'OOdoiz4AOzw', title: 'Destin Conrad “Nervous” official music video' },
+  clips: [
+    { provider: 'file', src: '/videos/nervous-01.mp4', title: 'Destin Conrad “Nervous” clip 1', aspect: '2868 / 1320' },
+    { provider: 'file', src: '/videos/nervous-02.mp4', title: 'Destin Conrad “Nervous” clip 2', aspect: '2868 / 1320' },
+    { provider: 'file', src: '/videos/nervous-03.mp4', title: 'Destin Conrad “Nervous” clip 3', aspect: '2868 / 1320' },
+  ],
   photos: [
-  {
-  id: 'destin-conrad-nervous-1',
-        src: '/photos/nervous-01.jpeg',
-        alt: 'Maria Williams in a gold bikini top and pink crochet skirt dancing against a weathered wall with two dancers in the Destin Conrad “Nervous” video',
-        orientation: 'landscape',
-        focus: '35% 35%',
-      },
-      {
-        id: 'destin-conrad-nervous-2',
-        src: '/photos/nervous-02.jpeg',
-        alt: 'Close-up of ringed hands on an orange mesh outfit and fishnets in the Destin Conrad “Nervous” video',
-        orientation: 'landscape',
-        focus: '50% 50%',
-      },
-      {
-        id: 'destin-conrad-nervous-3',
-        src: '/photos/nervous-03.jpeg',
-        alt: 'Maria Williams in profile with a striped popsicle and gold jewelry in the Destin Conrad “Nervous” video',
-        orientation: 'landscape',
-        focus: '40% 40%',
-      },
-      {
-        id: 'destin-conrad-nervous-4',
-        src: '/photos/nervous-04.jpeg',
-        alt: 'Destin Conrad in a BOY SPORTS sweater with dancers against a pink wall in the “Nervous” video',
-        orientation: 'landscape',
-        focus: '50% 35%',
-      },
       {
         id: 'destin-conrad-nervous-5',
         src: '/photos/nervous-05.jpeg',

@@ -99,9 +99,19 @@ export function PortfolioGallery({ projects }: { projects: Project[] }) {
 
             {project.video && (
               <div className="lg:w-8/12">
-                <VideoEmbed video={project.video} />
-              </div>
-            )}
+          <VideoEmbed video={project.video} />
+          </div>
+  )}
+
+  {project.clips && project.clips.length > 0 && (
+    <ul className="flex flex-col gap-4 lg:w-8/12">
+      {project.clips.map((clip) => (
+        <li key={clip.src}>
+          <VideoEmbed video={clip} />
+        </li>
+      ))}
+    </ul>
+  )}
 
             {project.photos.length > 0 && (
             <ul className="columns-1 gap-4 sm:columns-2 lg:w-8/12">
