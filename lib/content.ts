@@ -530,14 +530,11 @@ export const projects: Project[] = [
     creditGroup: 'Beauty / Brand',
     categories: ['Editorial', 'Fashion'],
     personal: true,
+    clips: [
+      { provider: 'file', src: '/videos/rooftop-01.mp4', title: 'Rooftop & Pool clip 1', aspect: '9 / 16' },
+      { provider: 'file', src: '/videos/rooftop-02.mp4', title: 'Rooftop & Pool clip 2', aspect: '9 / 16' },
+    ],
     photos: [
-      {
-        id: 'rooftop-pool-1',
-        src: '/photos/rooftop-01b.jpeg',
-        alt: 'Maria Williams reclining poolside in a tropical print bikini and sarong beside a vintage caution sign',
-        orientation: 'portrait',
-        focus: '35% 65%',
-      },
       {
         id: 'rooftop-pool-2',
         src: '/photos/rooftop-02.jpeg',
@@ -558,13 +555,6 @@ export const projects: Project[] = [
         alt: 'Maria Williams with hands on hips under a bright sun flare on a rooftop',
         orientation: 'portrait',
         focus: '50% 35%',
-      },
-      {
-        id: 'rooftop-pool-5',
-        src: '/photos/rooftop-05.jpeg',
-        alt: 'Maria Williams lounging at the pool edge with a hand at her neck, checkered wall behind',
-        orientation: 'portrait',
-        focus: '35% 45%',
       },
     ],
   },
@@ -783,7 +773,7 @@ export const selectedWork: { project: string; photo: string }[] = [
   { project: 'lab-74-runway', photo: 'lab-74-runway-2' },
   { project: 'venice-beach', photo: 'venice-beach-3' },
   { project: 'zernell-gillie-fragrances', photo: 'zernell-gillie-fragrances-1' },
-  { project: 'rooftop-pool', photo: 'rooftop-pool-1' },
+  { project: 'rooftop-pool', photo: 'rooftop-pool-2' },
   { project: 'venice-beach', photo: 'venice-beach-6' },
   { project: 'venice-beach', photo: 'venice-beach-1' },
   { project: 'riot-games', photo: 'riot-games-1' },
