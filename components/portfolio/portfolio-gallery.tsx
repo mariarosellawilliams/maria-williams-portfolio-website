@@ -10,6 +10,19 @@ import { cn } from '@/lib/utils'
 
 const categoryOrder: Category[] = ['Editorial', 'Fashion', 'Runway', 'Commercial', 'Beauty', 'Music Videos', 'Film', 'Digitals']
 
+type Photo = Project['photos'][number]
+
+// A lone landscape among portraits leaves an empty hole in a two-column masonry,
+// so it is lifted to the top and spans both columns.
+function orderForLayout(photos: Photo[]): { photo: Photo; wide: boolean }[] {
+  const landscapes = photos.filter((p) => p.orientation === 'landscape')
+  const others = photos.filter((p) => p.orientation !== 'landscape')
+  if (landscapes.length === 1 && others.length >= 2 && others.length % 2 === 0) {
+    return [{ photo: landscapes[0], wide: true }, ...others.map((photo) => ({ photo, wide: false }))]
+  }
+  return photos.map((photo) => ({ photo, wide: false }))
+}
+
 export function PortfolioGallery({ projects }: { projects: Project[] }) {
   const withPhotos = useMemo(() => projects.filter((p) => p.photos.length > 0 || p.video), [projects])
   const categories = useMemo(
@@ -92,10 +105,10 @@ export function PortfolioGallery({ projects }: { projects: Project[] }) {
 
             {project.photos.length > 0 && (
             <ul className="columns-1 gap-4 sm:columns-2 lg:w-8/12">
-              {project.photos.map((photo) => {
+              {orderForLayout(project.photos).map(({ photo, wide }) => {
                 const index = items.findIndex((it) => it.photo.id === photo.id)
                 return (
-                  <li key={photo.id} className="mb-4 break-inside-avoid">
+                  <li key={photo.id} className={cn('mb-4 break-inside-avoid', wide && 'sm:[column-span:all]')}>
                     <button
                       type="button"
                       onClick={() => setActiveIndex(index)}
