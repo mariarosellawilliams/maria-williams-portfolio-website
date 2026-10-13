@@ -44,6 +44,8 @@ export type Project = {
   creditGroup: CreditGroup
   categories: Category[]
   featuredCredit?: boolean
+  /** Self-produced portfolio shoots: shown in the gallery, left out of the credits list. */
+  personal?: boolean
   collaborators?: { label: string; name: string }[]
   links?: { label: string; href: string }[]
   photos: Photo[]
@@ -410,18 +412,188 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: 'portfolio-shots',
-    title: 'Professional Portfolio',
+    slug: 'studio-portrait',
+    title: 'Studio Portrait',
     client: 'Personal portfolio',
-    role: 'Beauty, Editorial & Lifestyle Model',
+    role: 'Beauty & Portrait Model',
     creditGroup: 'Beauty / Brand',
-    categories: ['Editorial', 'Beauty'],
-    photos: slots('portfolio-shots', 'Beauty and editorial portfolio', [
-      'portrait',
-      'portrait',
-      'landscape',
-      'portrait',
-    ]),
+    categories: ['Beauty', 'Editorial'],
+    personal: true,
+    photos: [
+      {
+        id: 'studio-portrait-1',
+        src: '/photos/studio-01.jpeg',
+        alt: 'Studio portrait of Maria Williams in a burgundy lace halter with layered necklaces against a deep green backdrop',
+        orientation: 'portrait',
+        focus: '50% 30%',
+      },
+    ],
+  },
+  {
+    slug: 'rooftop-pool',
+    title: 'Rooftop & Pool',
+    client: 'Personal portfolio',
+    role: 'Swim & Lifestyle Model',
+    creditGroup: 'Beauty / Brand',
+    categories: ['Editorial', 'Fashion'],
+    personal: true,
+    photos: [
+      {
+        id: 'rooftop-pool-1',
+        src: '/photos/rooftop-01.jpeg',
+        alt: 'Maria Williams reclining poolside in a tropical print bikini and sarong beside a vintage caution sign',
+        orientation: 'portrait',
+        focus: '35% 65%',
+      },
+      {
+        id: 'rooftop-pool-2',
+        src: '/photos/rooftop-02.jpeg',
+        alt: 'Maria Williams looking back over her shoulder against a rooftop glass railing above the city',
+        orientation: 'portrait',
+        focus: '50% 35%',
+      },
+      {
+        id: 'rooftop-pool-3',
+        src: '/photos/rooftop-03.jpeg',
+        alt: 'Full-length shot of Maria Williams in a tropical print set on a sunlit rooftop',
+        orientation: 'portrait',
+        focus: '50% 30%',
+      },
+      {
+        id: 'rooftop-pool-4',
+        src: '/photos/rooftop-04.jpeg',
+        alt: 'Maria Williams with hands on hips under a bright sun flare on a rooftop',
+        orientation: 'portrait',
+        focus: '50% 35%',
+      },
+      {
+        id: 'rooftop-pool-5',
+        src: '/photos/rooftop-05.jpeg',
+        alt: 'Maria Williams lounging at the pool edge with a hand at her neck, checkered wall behind',
+        orientation: 'portrait',
+        focus: '35% 45%',
+      },
+    ],
+  },
+  {
+    slug: 'venice-beach',
+    title: 'Venice Beach',
+    client: 'Personal portfolio',
+    role: 'Editorial Model',
+    creditGroup: 'Beauty / Brand',
+    categories: ['Editorial', 'Fashion'],
+    personal: true,
+    photos: [
+      {
+        id: 'venice-beach-1',
+        src: '/photos/venice-09.jpeg',
+        alt: 'Maria Williams holding out the train of a hot pink gown at the shoreline as waves break behind her',
+        orientation: 'portrait',
+        focus: '50% 55%',
+      },
+      {
+        id: 'venice-beach-2',
+        src: '/photos/venice-01.jpeg',
+        alt: 'Maria Williams in a hot pink slip dress between graffiti-painted palm trunks on Venice Beach',
+        orientation: 'portrait',
+        focus: '50% 40%',
+      },
+      {
+        id: 'venice-beach-3',
+        src: '/photos/venice-03.jpeg',
+        alt: 'Maria Williams in a backless pink gown looking over her shoulder against a pink graffiti wall',
+        orientation: 'portrait',
+        focus: '45% 40%',
+      },
+      {
+        id: 'venice-beach-4',
+        src: '/photos/venice-10.jpeg',
+        alt: 'Maria Williams in a flowing pink gown between graffiti palm trunks reading VIRTUAL',
+        orientation: 'portrait',
+        focus: '45% 50%',
+      },
+      {
+        id: 'venice-beach-5',
+        src: '/photos/venice-07.jpeg',
+        alt: 'Close profile of Maria Williams in a backless pink gown at the water under a dramatic sky',
+        orientation: 'portrait',
+        focus: '35% 60%',
+      },
+      {
+        id: 'venice-beach-6',
+        src: '/photos/venice-05.jpeg',
+        alt: 'Maria Williams glancing back at the shoreline in a pink gown beneath sweeping clouds',
+        orientation: 'portrait',
+        focus: '35% 70%',
+      },
+      {
+        id: 'venice-beach-7',
+        src: '/photos/venice-08.jpeg',
+        alt: 'Maria Williams standing in the surf in a pink gown, looking back toward the camera',
+        orientation: 'portrait',
+        focus: '35% 60%',
+      },
+      {
+        id: 'venice-beach-8',
+        src: '/photos/venice-06.jpeg',
+        alt: 'Maria Williams in profile at the waterline in a pink gown with wide blue sky above',
+        orientation: 'portrait',
+        focus: '30% 70%',
+      },
+      {
+        id: 'venice-beach-9',
+        src: '/photos/venice-02.jpeg',
+        alt: 'Maria Williams in profile on the sand with sun flare between palm trees',
+        orientation: 'portrait',
+        focus: '50% 55%',
+      },
+      {
+        id: 'venice-beach-10',
+        src: '/photos/venice-04.jpeg',
+        alt: 'Wider shot of Maria Williams in a pink gown against a graffiti wall and blue sky',
+        orientation: 'portrait',
+        focus: '45% 50%',
+      },
+    ],
+  },
+  {
+    slug: 'santa-monica',
+    title: 'Santa Monica',
+    client: 'Personal portfolio',
+    role: 'Swim & Lifestyle Model',
+    creditGroup: 'Beauty / Brand',
+    categories: ['Editorial'],
+    personal: true,
+    photos: [
+      {
+        id: 'santa-monica-1',
+        src: '/photos/santa-monica-04.jpeg',
+        alt: 'Silhouette of Maria Williams seated on wet sand at sunset with light reflecting off the water',
+        orientation: 'landscape',
+        focus: '55% 60%',
+      },
+      {
+        id: 'santa-monica-2',
+        src: '/photos/santa-monica-02.jpeg',
+        alt: 'Maria Williams reclining in shallow water in a gold bikini and pink crochet skirt',
+        orientation: 'landscape',
+        focus: '45% 55%',
+      },
+      {
+        id: 'santa-monica-3',
+        src: '/photos/santa-monica-03.jpeg',
+        alt: 'Maria Williams seated in the shallows looking down, lifeguard tower behind',
+        orientation: 'landscape',
+        focus: '50% 55%',
+      },
+      {
+        id: 'santa-monica-4',
+        src: '/photos/santa-monica-01.jpeg',
+        alt: 'Maria Williams sitting on the sand in a gold bikini and pink crochet skirt on a busy beach',
+        orientation: 'landscape',
+        focus: '45% 60%',
+      },
+    ],
   },
 ]
 

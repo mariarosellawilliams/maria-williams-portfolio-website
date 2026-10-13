@@ -4,7 +4,7 @@ export function CreditsList() {
   return (
     <div className="flex flex-col gap-14">
       {creditGroups.map((group) => {
-        const credits = projects.filter((p) => p.creditGroup === group)
+        const credits = projects.filter((p) => p.creditGroup === group && !p.personal)
         if (credits.length === 0) return null
         return (
           <div key={group} className="flex flex-col gap-4 lg:flex-row lg:gap-12">
