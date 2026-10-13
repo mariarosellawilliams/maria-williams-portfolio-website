@@ -15,6 +15,7 @@ export type Category =
   | 'Beauty'
   | 'Music Videos'
   | 'Film'
+  | 'Digitals'
 
 export type Orientation = 'portrait' | 'landscape' | 'square'
 
@@ -392,7 +393,15 @@ export const projects: Project[] = [
     role: 'Model',
     creditGroup: 'Beauty / Brand',
     categories: ['Commercial'],
-    photos: slots('hedonistas-mezcal', 'Hedonistas De La Fe mezcal campaign', ['portrait', 'square']),
+    photos: [
+      {
+        id: 'hedonistas-mezcal-1',
+        src: '/photos/hedonistas-01.jpeg',
+        alt: 'Maria Williams in a pink cardigan laughing with friends around a fire pit, cocktail in hand, for Hedonistas De La Fe',
+        orientation: 'portrait',
+        focus: '78% 50%',
+      },
+    ],
   },
   {
     slug: 'zernell-gillie-fragrances',
@@ -593,6 +602,28 @@ export const projects: Project[] = [
         orientation: 'landscape',
         focus: '45% 60%',
       },
+    ],
+  },
+  {
+    slug: 'digitals',
+    title: 'Digitals',
+    client: 'Unretouched polaroids',
+    role: 'Natural, no-filter reference',
+    creditGroup: 'Beauty / Brand',
+    categories: ['Digitals'],
+    personal: true,
+    photos: [
+      { id: 'digitals-1', src: '/photos/digitals-05.jpeg', alt: 'Digital — front-facing headshot, hair pulled back, natural makeup', orientation: 'portrait', focus: '50% 40%' },
+      { id: 'digitals-2', src: '/photos/digitals-03.jpeg', alt: 'Digital — side profile headshot', orientation: 'portrait', focus: '55% 45%' },
+      { id: 'digitals-3', src: '/photos/digitals-01.jpeg', alt: 'Digital — front-facing waist-up in a black cami', orientation: 'portrait', focus: '50% 30%' },
+      { id: 'digitals-4', src: '/photos/digitals-04.jpeg', alt: 'Digital — three-quarter headshot looking over the shoulder', orientation: 'portrait', focus: '50% 45%' },
+      { id: 'digitals-5', src: '/photos/digitals-06.jpeg', alt: 'Digital — three-quarter headshot looking away from camera', orientation: 'portrait', focus: '50% 40%' },
+      { id: 'digitals-6', src: '/photos/digitals-02.jpeg', alt: 'Digital — three-quarter waist-up looking away from camera', orientation: 'portrait', focus: '50% 30%' },
+      { id: 'digitals-7', src: '/photos/digitals-07.jpeg', alt: 'Digital — smiling waist-up shot', orientation: 'portrait', focus: '50% 40%' },
+      { id: 'digitals-8', src: '/photos/digitals-09.jpeg', alt: 'Digital — full-length front in black cami and black jeans against a concrete wall', orientation: 'portrait', focus: '45% 50%' },
+      { id: 'digitals-9', src: '/photos/digitals-10.jpeg', alt: 'Digital — full-length side profile against a concrete wall', orientation: 'portrait', focus: '45% 50%' },
+      { id: 'digitals-10', src: '/photos/digitals-08.jpeg', alt: 'Digital — full-length front in black cami and grey jeans against a sunlit wall', orientation: 'portrait', focus: '50% 50%' },
+      { id: 'digitals-11', src: '/photos/digitals-11.jpeg', alt: 'Digital — full-length pose with one arm raised against a concrete wall', orientation: 'portrait', focus: '45% 50%' },
     ],
   },
 ]

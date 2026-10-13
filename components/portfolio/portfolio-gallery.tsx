@@ -7,7 +7,7 @@ import { Lightbox, type LightboxItem } from '@/components/portfolio/lightbox'
 import type { Category, Project } from '@/lib/content'
 import { cn } from '@/lib/utils'
 
-const categoryOrder: Category[] = ['Editorial', 'Fashion', 'Runway', 'Commercial', 'Beauty', 'Music Videos', 'Film']
+const categoryOrder: Category[] = ['Editorial', 'Fashion', 'Runway', 'Commercial', 'Beauty', 'Music Videos', 'Film', 'Digitals']
 
 export function PortfolioGallery({ projects }: { projects: Project[] }) {
   const withPhotos = useMemo(() => projects.filter((p) => p.photos.length > 0), [projects])

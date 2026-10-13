@@ -15,6 +15,7 @@ export const metadata: Metadata = {
 
 const jumpLinks = [
   { href: '#portfolio', label: 'Portfolio' },
+  { href: '#digitals', label: 'Digitals' },
   { href: '#credits', label: 'Credits' },
   { href: '#resume', label: 'Résumé' },
   { href: '#details', label: 'Details' },
