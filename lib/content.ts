@@ -290,14 +290,9 @@ export const projects: Project[] = [
         orientation: 'portrait',
         focus: '30% 35%',
       },
-      {
-        id: 'gap-campaign-5',
-        src: '/photos/gap-05.jpeg',
-        alt: 'Overhead shot of the Gap cast in denim and outerwear looking up from the middle of a road',
-        orientation: 'landscape',
-        focus: '50% 30%',
-      },
     ],
+    links: [{ label: 'Watch on Instagram', href: 'https://www.instagram.com/reel/Dbolk_qSRkg/' }],
+    video: { provider: 'instagram', id: 'Dbolk_qSRkg', title: '“Wishing on a Star” Gap fashion short film' },
   },
   {
     slug: 'riot-games',
