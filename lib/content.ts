@@ -59,6 +59,9 @@ export const profile = {
   phone: '601-951-9975',
   phoneHref: 'tel:+16019519975',
   travel: 'Available to travel for work',
+  representation: 'Seeking agency representation',
+  representationNote:
+    'Maria is currently independent and open to agency representation. Agents and scouts are welcome to reach out directly or use the inquiry form.',
   bio: [
     'Maria Williams is a Los Angeles-based model, dancer, and creative talent working across fashion, beauty, fragrance, lifestyle, streetwear, runway, branded campaigns, music videos, and on-camera performance.',
     'Her movement background through the USC Kaufman School of Dance brings ease, control, and storytelling to every frame — on set, on the runway, and in front of the camera.',

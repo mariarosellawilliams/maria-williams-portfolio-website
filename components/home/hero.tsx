@@ -19,6 +19,10 @@ export function Hero() {
             <p className="font-serif text-2xl italic">{profile.descriptor}</p>
             <span className="hidden h-px flex-1 bg-primary/40 sm:block" aria-hidden />
           </div>
+          <p className="flex w-fit items-center gap-2 border border-primary px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
+            <span className="size-1.5 rounded-full bg-primary" aria-hidden />
+            Open to agency representation
+          </p>
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link
               href="/portfolio"

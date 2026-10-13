@@ -17,7 +17,7 @@ export function About() {
               <p key={p}>{p}</p>
             ))}
           </div>
-          <dl className="grid grid-cols-1 gap-6 border-t pt-8 sm:grid-cols-3">
+          <dl className="grid grid-cols-1 gap-6 border-t pt-8 sm:grid-cols-2">
             <div className="flex flex-col gap-1">
               <dt className="text-[11px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">Based in</dt>
               <dd className="font-serif text-xl">{profile.location}</dd>
@@ -29,6 +29,10 @@ export function About() {
             <div className="flex flex-col gap-1">
               <dt className="text-[11px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">Training</dt>
               <dd className="font-serif text-xl">USC Kaufman</dd>
+            </div>
+            <div className="flex flex-col gap-1">
+              <dt className="text-[11px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">Representation</dt>
+              <dd className="font-serif text-xl text-primary">Seeking agency</dd>
             </div>
           </dl>
           <ul className="flex flex-wrap gap-2" aria-label="Areas of work">

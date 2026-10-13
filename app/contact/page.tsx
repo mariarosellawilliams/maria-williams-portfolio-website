@@ -7,7 +7,7 @@ import { profile } from '@/lib/content'
 export const metadata: Metadata = {
   title: 'Booking & Collaborations',
   description:
-    'Book Los Angeles model Maria Williams for editorial, fashion, runway, commercial, beauty, and music video projects.',
+    'Book Los Angeles model Maria Williams for editorial, fashion, runway, commercial, beauty, and music video projects. Open to agency representation.',
 }
 
 export default function ContactPage() {
@@ -24,6 +24,13 @@ export default function ContactPage() {
               {"For editorial, campaign, runway, commercial, and music video projects, share a few details below and you'll hear back by email."}
             </p>
           </div>
+
+          <aside aria-labelledby="representation-title" className="flex flex-col gap-2 border-l-0 border-t border-primary pt-5">
+            <h2 id="representation-title" className="text-[11px] font-semibold uppercase tracking-[0.25em] text-primary">
+              Agencies &amp; scouts
+            </h2>
+            <p className="max-w-md leading-relaxed text-pretty">{profile.representationNote}</p>
+          </aside>
 
           <div className="relative hidden aspect-[4/5] w-full max-w-md overflow-hidden bg-secondary sm:block">
             <PhotoFrame photo={profile.contactPhoto} sizes="(min-width: 1024px) 35vw, 60vw" />

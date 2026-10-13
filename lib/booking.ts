@@ -1,4 +1,5 @@
 export const projectTypes = [
+  'Agency Representation',
   'Editorial',
   'Fashion / Campaign',
   'Runway',
