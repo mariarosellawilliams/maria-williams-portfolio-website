@@ -699,11 +699,11 @@ export const projects: Project[] = [
 
 /** Curated images for the home page "Selected Work" grid, in display order. */
 export const selectedWork: { project: string; photo: string }[] = [
+  { project: 'venice-beach', photo: 'venice-beach-1' },
   { project: 'lab-74-runway', photo: 'lab-74-runway-1' },
+  { project: 'studio-portrait', photo: 'studio-portrait-1' },
   { project: 'blrd-streetwear', photo: 'blrd-streetwear-2' },
-  { project: 'gap-campaign', photo: 'gap-campaign-4' },
-  { project: 'zernell-gillie-fragrances', photo: 'zernell-gillie-fragrances-1' },
-  { project: 'riot-games', photo: 'riot-games-1' },
+  { project: 'gap-campaign', photo: 'gap-campaign-5' },
 ]
 
 export const creditGroups: CreditGroup[] = [
