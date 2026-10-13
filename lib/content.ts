@@ -716,7 +716,11 @@ export const selectedWork: { project: string; photo: string }[] = [
   { project: 'zernell-gillie-fragrances', photo: 'zernell-gillie-fragrances-1' },
   { project: 'rooftop-pool', photo: 'rooftop-pool-1' },
   { project: 'venice-beach', photo: 'venice-beach-6' },
-]
+  { project: 'venice-beach', photo: 'venice-beach-1' },
+  { project: 'riot-games', photo: 'riot-games-1' },
+  { project: 'blrd-streetwear', photo: 'blrd-streetwear-4' },
+  { project: 'venice-beach', photo: 'venice-beach-5' },
+  ]
 
 export const creditGroups: CreditGroup[] = [
   'Runway / Fashion / Commercial',

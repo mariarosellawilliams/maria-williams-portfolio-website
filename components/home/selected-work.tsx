@@ -12,6 +12,10 @@ const layout = [
   'md:col-span-3 aspect-square',
   'md:col-span-4 aspect-[4/5] md:mt-16',
   'md:col-span-5 aspect-[4/5]',
+  'md:col-span-3 aspect-[3/4]',
+  'md:col-span-3 aspect-[3/4] md:mt-12',
+  'md:col-span-3 aspect-[3/4]',
+  'md:col-span-3 aspect-[3/4] md:mt-12',
 ]
 
 export function SelectedWork() {
