@@ -6,11 +6,12 @@ import { getSelectedWork } from '@/lib/content'
 import { cn } from '@/lib/utils'
 
 const layout = [
-  'md:col-span-5 md:row-span-2 aspect-[4/5] md:aspect-auto',
-  'md:col-span-4 aspect-[4/5]',
-  'md:col-span-3 aspect-[4/5] md:mt-16',
-  'md:col-span-3 aspect-[4/5]',
-  'md:col-span-4 aspect-[3/2] md:self-end',
+  'md:col-span-5 aspect-[4/5]',
+  'md:col-span-4 aspect-[4/5] md:mt-16',
+  'md:col-span-3 aspect-[3/4] md:self-end',
+  'md:col-span-3 aspect-square',
+  'md:col-span-4 aspect-[4/5] md:mt-16',
+  'md:col-span-5 aspect-[4/5]',
 ]
 
 export function SelectedWork() {
@@ -36,7 +37,7 @@ export function SelectedWork() {
           </Link>
         </div>
 
-        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-12 md:gap-6">
+        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-12 md:items-start md:gap-6">
           {items.map(({ project, photo }, i) => (
             <li key={photo.id} className={cn('relative', layout[i % layout.length])}>
               <Link
