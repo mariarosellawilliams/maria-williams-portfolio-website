@@ -51,8 +51,26 @@ export function Hero() {
             className="absolute -bottom-4 -right-4 hidden h-full w-full border border-primary lg:block"
             aria-hidden
           />
-          <div className="relative aspect-[4/5] w-full overflow-hidden bg-secondary motion-safe:animate-in motion-safe:fade-in motion-safe:duration-1000">
-            <PhotoFrame photo={profile.heroPhoto} sizes="(min-width: 1024px) 40vw, 100vw" priority />
+          <div className="relative flex flex-col gap-1.5 bg-background">
+            {profile.heroPhotos.map((photo, index) => (
+              <figure
+                key={photo.id}
+                style={{ animationDelay: `${index * 200}ms` }}
+                className="group relative aspect-[4/3] w-full overflow-hidden bg-secondary motion-safe:animate-in motion-safe:fade-in motion-safe:fill-mode-both motion-safe:duration-1000"
+              >
+                <PhotoFrame
+                  photo={photo}
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  priority={index === 0}
+                  className="transition-transform duration-700 group-hover:scale-[1.03]"
+                />
+                {photo.caption ? (
+                  <figcaption className="absolute bottom-3 left-3 bg-background/85 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-foreground backdrop-blur-sm">
+                    {photo.caption}
+                  </figcaption>
+                ) : null}
+              </figure>
+            ))}
           </div>
         </div>
       </div>

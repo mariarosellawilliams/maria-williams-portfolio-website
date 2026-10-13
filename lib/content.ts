@@ -77,13 +77,24 @@ export const profile = {
     { label: 'Instagram', handle: '@mariaaa_williams', href: 'https://www.instagram.com/mariaaa_williams' },
     { label: 'TikTok', handle: '@rirosella', href: 'https://www.tiktok.com/@rirosella' },
   ] as { label: 'Instagram' | 'TikTok'; handle: string | null; href: string | null }[],
-  heroPhoto: {
-    id: 'hero',
-    src: null,
-    alt: 'Portrait of Maria Williams',
-    orientation: 'portrait',
-    focus: '50% 25%',
-  } satisfies Photo as Photo,
+  heroPhotos: [
+    {
+      id: 'hero-front',
+      src: '/photos/digital-front.png',
+      alt: 'Maria Williams facing the camera against a warm cream wall, wearing a black camisole and gold hoops',
+      orientation: 'landscape',
+      focus: '50% 35%',
+      caption: 'Front',
+    },
+    {
+      id: 'hero-profile',
+      src: '/photos/digital-profile.png',
+      alt: 'Maria Williams in three-quarter profile looking to the side against a warm cream wall',
+      orientation: 'landscape',
+      focus: '55% 40%',
+      caption: 'Three-quarter',
+    },
+  ] satisfies Photo[] as Photo[],
   contactPhoto: {
     id: 'contact',
     src: null,
