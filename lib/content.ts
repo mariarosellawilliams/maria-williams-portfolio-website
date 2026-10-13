@@ -705,6 +705,13 @@ export const projects: Project[] = [
         orientation: 'portrait',
         focus: '50% 40%',
       },
+      {
+        id: 'after-dark-2',
+        src: '/photos/after-dark-02.jpeg',
+        alt: 'Overhead shot of Maria Williams lying on a night sidewalk in a green denim buckle halter and studded belt, eyes closed',
+        orientation: 'portrait',
+        focus: '50% 45%',
+      },
     ],
   },
   {
