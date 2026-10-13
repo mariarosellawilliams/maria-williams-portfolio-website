@@ -4,13 +4,14 @@ import { useMemo, useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import { PhotoFrame, aspectClass } from '@/components/photo-frame'
 import { Lightbox, type LightboxItem } from '@/components/portfolio/lightbox'
+import { VideoEmbed } from '@/components/portfolio/video-embed'
 import type { Category, Project } from '@/lib/content'
 import { cn } from '@/lib/utils'
 
 const categoryOrder: Category[] = ['Editorial', 'Fashion', 'Runway', 'Commercial', 'Beauty', 'Music Videos', 'Film', 'Digitals']
 
 export function PortfolioGallery({ projects }: { projects: Project[] }) {
-  const withPhotos = useMemo(() => projects.filter((p) => p.photos.length > 0), [projects])
+  const withPhotos = useMemo(() => projects.filter((p) => p.photos.length > 0 || p.video), [projects])
   const categories = useMemo(
     () => categoryOrder.filter((c) => withPhotos.some((p) => p.categories.includes(c))),
     [withPhotos],
@@ -83,6 +84,13 @@ export function PortfolioGallery({ projects }: { projects: Project[] }) {
               ))}
             </header>
 
+            {project.video && (
+              <div className="lg:w-8/12">
+                <VideoEmbed video={project.video} />
+              </div>
+            )}
+
+            {project.photos.length > 0 && (
             <ul className="columns-1 gap-4 sm:columns-2 lg:w-8/12">
               {project.photos.map((photo) => {
                 const index = items.findIndex((it) => it.photo.id === photo.id)
@@ -105,6 +113,7 @@ export function PortfolioGallery({ projects }: { projects: Project[] }) {
                 )
               })}
             </ul>
+            )}
           </article>
         ))}
       </div>

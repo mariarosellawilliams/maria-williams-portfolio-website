@@ -27,12 +27,12 @@ export function CreditsList() {
                         {p.date ?? p.status}
                       </span>
                     )}
-                    {p.photos.length > 0 && (
+                    {(p.photos.length > 0 || p.video) && (
                       <a
                         href={`#${p.slug}`}
                         className="text-xs font-semibold uppercase tracking-[0.18em] text-primary underline-offset-4 hover:underline"
                       >
-                        View photos
+                        {p.photos.length > 0 ? 'View photos' : 'Watch video'}
                         <span className="sr-only"> from {p.client}</span>
                       </a>
                     )}

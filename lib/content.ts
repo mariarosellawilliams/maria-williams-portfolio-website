@@ -49,8 +49,13 @@ export type Project = {
   personal?: boolean
   collaborators?: { label: string; name: string }[]
   links?: { label: string; href: string }[]
+  video?: ProjectVideo
   photos: Photo[]
 }
+
+export type ProjectVideo =
+  | { provider: 'youtube'; id: string; title: string }
+  | { provider: 'instagram'; id: string; title: string }
 
 export const profile = {
   name: 'Maria Williams',
@@ -200,16 +205,6 @@ export const training = [
 
 export const petTalent =
   'Miniature Schnauzer available for pet-friendly shoots: brown, blue eyes, 17 lbs, camera-experienced and comfortable on set.'
-
-function slots(slug: string, label: string, orientations: Orientation[]): Photo[] {
-  return orientations.map((orientation, i) => ({
-    id: `${slug}-${i + 1}`,
-    src: null,
-    alt: `${label} — photo ${i + 1}`,
-    orientation,
-    focus: '50% 30%',
-  }))
-}
 
 export const projects: Project[] = [
   {
@@ -403,7 +398,9 @@ export const projects: Project[] = [
     role: 'Music Video Model',
     creditGroup: 'Music Video / Film',
     categories: ['Music Videos'],
-    photos: slots('osita-davd-vex', 'Osita Davd “VEX” music video', ['portrait', 'landscape']),
+    links: [{ label: 'Watch on YouTube', href: 'https://youtu.be/_Ez3CznkglI' }],
+    video: { provider: 'youtube', id: '_Ez3CznkglI', title: 'Osita Davd “VEX” music video' },
+    photos: [],
   },
   {
     slug: 'lurks-turbulence',
@@ -412,7 +409,9 @@ export const projects: Project[] = [
     role: 'Music Video Model',
     creditGroup: 'Music Video / Film',
     categories: ['Music Videos'],
-    photos: slots('lurks-turbulence', 'Lurks “Turbulence” music video', ['landscape', 'portrait']),
+    links: [{ label: 'Watch on Instagram', href: 'https://www.instagram.com/reel/Dcruq6sPyxd/' }],
+    video: { provider: 'instagram', id: 'Dcruq6sPyxd', title: 'Lurks “Turbulence” music video' },
+    photos: [],
   },
   {
     slug: 'writerboy-film',
