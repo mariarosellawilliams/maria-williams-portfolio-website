@@ -28,7 +28,11 @@ export type Photo = {
   photographer?: string
 }
 
-export type CreditGroup = 'Runway / Fashion / Commercial' | 'Music Video / Film' | 'Beauty / Brand'
+export type CreditGroup =
+  | 'Runway / Fashion / Commercial'
+  | 'Music Video / Film'
+  | 'Television'
+  | 'Beauty / Brand'
 
 export type Project = {
   slug: string
@@ -64,8 +68,8 @@ export const profile = {
    * username (e.g. '@mariarosella'). Leave `href: null` to show a placeholder.
    */
   socials: [
-    { label: 'Instagram', handle: null, href: null },
-    { label: 'TikTok', handle: null, href: null },
+    { label: 'Instagram', handle: '@mariaaa_williams', href: 'https://www.instagram.com/mariaaa_williams' },
+    { label: 'TikTok', handle: '@rirosella', href: 'https://www.tiktok.com/@rirosella' },
   ] as { label: 'Instagram' | 'TikTok'; handle: string | null; href: string | null }[],
   heroPhoto: {
     id: 'hero',
@@ -108,7 +112,7 @@ export const resumes: Resume[] = [
     id: 'professional',
     tab: 'Professional',
     heading: 'Professional Résumé',
-    src: null,
+    src: '/maria-williams-professional-resume.pdf',
     fileName: 'Maria-Williams-Professional-Resume.pdf',
   },
 ]
@@ -262,6 +266,16 @@ export const projects: Project[] = [
     photos: [],
   },
   {
+    slug: 'sony-door-3',
+    title: 'Door 3',
+    client: 'SONY Productions',
+    role: 'Dating Show Contestant',
+    date: 'October 2026',
+    creditGroup: 'Television',
+    categories: ['Film'],
+    photos: [],
+  },
+  {
     slug: 'hedonistas-mezcal',
     title: 'Hedonistas De La Fe',
     client: 'Hedonistas De La Fe Mezcal Tequila',
@@ -307,6 +321,7 @@ export const selectedWork: { project: string; photo: string }[] = [
 export const creditGroups: CreditGroup[] = [
   'Runway / Fashion / Commercial',
   'Music Video / Film',
+  'Television',
   'Beauty / Brand',
 ]
 
