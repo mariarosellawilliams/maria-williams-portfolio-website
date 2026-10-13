@@ -358,11 +358,13 @@ export const projects: Project[] = [
     client: 'Destin Conrad',
     role: 'Music Video Talent & Dancer',
     creditGroup: 'Music Video / Film',
-    categories: ['Music Videos'],
-    featuredCredit: true,
-    photos: [
-      {
-        id: 'destin-conrad-nervous-1',
+  categories: ['Music Videos'],
+  featuredCredit: true,
+  links: [{ label: 'Watch on YouTube', href: 'https://youtu.be/OOdoiz4AOzw' }],
+  video: { provider: 'youtube', id: 'OOdoiz4AOzw', title: 'Destin Conrad “Nervous” official music video' },
+  photos: [
+  {
+  id: 'destin-conrad-nervous-1',
         src: '/photos/nervous-01.jpeg',
         alt: 'Maria Williams in a gold bikini top and pink crochet skirt dancing against a weathered wall with two dancers in the Destin Conrad “Nervous” video',
         orientation: 'landscape',
