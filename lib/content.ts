@@ -234,6 +234,13 @@ export const projects: Project[] = [
         orientation: 'portrait',
         focus: '50% 30%',
       },
+      {
+        id: 'lab-74-runway-3',
+        src: '/photos/lab74-03.jpeg',
+        alt: 'Maria Williams leaning against a red brick wall at night in a blue camo bomber with fur hood and coral maxi skirt for Lab 74',
+        orientation: 'portrait',
+        focus: '45% 30%',
+      },
     ],
   },
   {
@@ -392,6 +399,8 @@ export const projects: Project[] = [
     { provider: 'file', src: '/videos/nervous-01.mp4', title: 'Destin Conrad “Nervous” clip 1', aspect: '2868 / 1320' },
     { provider: 'file', src: '/videos/nervous-02.mp4', title: 'Destin Conrad “Nervous” clip 2', aspect: '2868 / 1320' },
     { provider: 'file', src: '/videos/nervous-03.mp4', title: 'Destin Conrad “Nervous” clip 3', aspect: '2868 / 1320' },
+    { provider: 'file', src: '/videos/nervous-04.mp4', title: 'Destin Conrad “Nervous” clip 4', aspect: '2868 / 1320' },
+    { provider: 'file', src: '/videos/nervous-05.mp4', title: 'Destin Conrad “Nervous” clip 5', aspect: '2868 / 1320' },
   ],
   photos: [
       {
@@ -643,6 +652,13 @@ export const projects: Project[] = [
         orientation: 'portrait',
         focus: '45% 50%',
       },
+      {
+        id: 'venice-beach-11',
+        src: '/photos/venice-11.jpeg',
+        alt: 'Maria Williams in a hot pink gown with arms outstretched against a giant painted flower mural, palm trees above',
+        orientation: 'portrait',
+        focus: '45% 60%',
+      },
     ],
   },
   {
@@ -686,6 +702,27 @@ export const projects: Project[] = [
         id: 'santa-monica-5',
         src: '/photos/santa-monica-05.jpeg',
         alt: 'Maria Williams posed in the shallows in a gold bikini and pink crochet skirt beside a rainbow lifeguard tower',
+        orientation: 'landscape',
+        focus: '40% 55%',
+      },
+      {
+        id: 'santa-monica-6',
+        src: '/photos/santa-monica-06.jpeg',
+        alt: 'Maria Williams reclining in the shoreline water in a gold bikini and pink crochet skirt, her reflection beneath her',
+        orientation: 'landscape',
+        focus: '45% 50%',
+      },
+      {
+        id: 'santa-monica-7',
+        src: '/photos/santa-monica-07.jpeg',
+        alt: 'Low angle of Maria Williams lying in the surf as foam rolls in, gold bikini and pink crochet skirt',
+        orientation: 'landscape',
+        focus: '50% 50%',
+      },
+      {
+        id: 'santa-monica-8',
+        src: '/photos/santa-monica-02.jpeg',
+        alt: 'Wide shot of Maria Williams seated in the shallows under a big cloudy sky, beachfront towers behind',
         orientation: 'landscape',
         focus: '40% 55%',
       },
