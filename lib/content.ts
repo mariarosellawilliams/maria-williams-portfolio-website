@@ -207,7 +207,22 @@ export const projects: Project[] = [
     creditGroup: 'Runway / Fashion / Commercial',
     categories: ['Runway', 'Fashion'],
     featuredCredit: true,
-    photos: slots('lab-74-runway', 'Lab 74 runway show', ['portrait', 'portrait', 'landscape']),
+    photos: [
+      {
+        id: 'lab-74-runway-1',
+        src: '/photos/lab74-01.jpeg',
+        alt: 'Maria Williams at night in a blue camo bomber, pinstripe blazer, and coral skirt for Lab 74',
+        orientation: 'portrait',
+        focus: '50% 25%',
+      },
+      {
+        id: 'lab-74-runway-2',
+        src: '/photos/lab74-02.jpeg',
+        alt: 'Maria Williams and a fellow model in Lab 74 looks beside parked cars at night',
+        orientation: 'portrait',
+        focus: '50% 30%',
+      },
+    ],
   },
   {
     slug: 'apple-music',
@@ -224,11 +239,39 @@ export const projects: Project[] = [
     title: 'Gap Campaign',
     client: 'Gap',
     role: 'Model',
-    status: 'Media pending',
     creditGroup: 'Runway / Fashion / Commercial',
     categories: ['Fashion', 'Commercial'],
     featuredCredit: true,
-    photos: [],
+    photos: [
+      {
+        id: 'gap-campaign-1',
+        src: '/photos/gap-01.jpeg',
+        alt: 'Four models in Gap denim posing on a sunlit rooftop',
+        orientation: 'portrait',
+        focus: '50% 30%',
+      },
+      {
+        id: 'gap-campaign-2',
+        src: '/photos/gap-02.jpeg',
+        alt: 'Maria Williams and two models in Gap denim against a hillside skyline',
+        orientation: 'portrait',
+        focus: '40% 45%',
+      },
+      {
+        id: 'gap-campaign-3',
+        src: '/photos/gap-03.jpeg',
+        alt: 'Gap campaign group shot beneath a parking structure stairway',
+        orientation: 'landscape',
+        focus: '50% 35%',
+      },
+      {
+        id: 'gap-campaign-4',
+        src: '/photos/gap-04.jpeg',
+        alt: 'Maria Williams in a green halter and denim skirt on a stairway with the Gap cast',
+        orientation: 'portrait',
+        focus: '30% 35%',
+      },
+    ],
   },
   {
     slug: 'riot-games',
@@ -238,17 +281,60 @@ export const projects: Project[] = [
     creditGroup: 'Runway / Fashion / Commercial',
     categories: ['Commercial', 'Fashion'],
     featuredCredit: true,
-    photos: slots('riot-games', 'Riot Games merch drop', ['landscape', 'portrait', 'portrait']),
+    photos: [
+      {
+        id: 'riot-games-1',
+        src: '/photos/riot-01.jpeg',
+        alt: 'Maria Williams in a maroon League of Legends Akali hoodie in a pink set',
+        orientation: 'portrait',
+        focus: '50% 30%',
+      },
+    ],
   },
   {
     slug: 'blrd-streetwear',
     title: 'BLRD Streetwear',
     client: 'BLRD',
     role: 'Model',
-    status: 'Media pending',
     creditGroup: 'Runway / Fashion / Commercial',
     categories: ['Fashion'],
-    photos: [],
+    photos: [
+      {
+        id: 'blrd-streetwear-1',
+        src: '/photos/blrd-01.jpeg',
+        alt: 'Maria Williams in a brown BLRD soccer jersey leaning on a railing',
+        orientation: 'portrait',
+        focus: '50% 30%',
+      },
+      {
+        id: 'blrd-streetwear-2',
+        src: '/photos/blrd-02.jpeg',
+        alt: 'Maria Williams posing with layered gold chains in a BLRD jersey',
+        orientation: 'portrait',
+        focus: '50% 30%',
+      },
+      {
+        id: 'blrd-streetwear-3',
+        src: '/photos/blrd-03.jpeg',
+        alt: 'Maria Williams in a BLRD jersey at golden hour by the beach',
+        orientation: 'portrait',
+        focus: '50% 25%',
+      },
+      {
+        id: 'blrd-streetwear-4',
+        src: '/photos/blrd-04.jpeg',
+        alt: 'Maria Williams seated on a railing in a BLRD jersey with palm trees behind',
+        orientation: 'portrait',
+        focus: '50% 30%',
+      },
+      {
+        id: 'blrd-streetwear-5',
+        src: '/photos/blrd-05.jpeg',
+        alt: 'BLRD cast in soccer jerseys in front of a graffiti wall at the beach',
+        orientation: 'landscape',
+        focus: '60% 40%',
+      },
+    ],
   },
   {
     slug: 'destin-conrad-nervous',
@@ -313,7 +399,15 @@ export const projects: Project[] = [
     role: 'Model',
     creditGroup: 'Beauty / Brand',
     categories: ['Beauty', 'Commercial'],
-    photos: slots('zernell-gillie-fragrances', 'Zernell Gillie fragrance shoot', ['portrait', 'portrait']),
+    photos: [
+      {
+        id: 'zernell-gillie-fragrances-1',
+        src: '/photos/zernell-gillie-01.jpeg',
+        alt: 'Silhouette of Maria Williams holding a Zernell Gillie "Blues" fragrance bottle against amber light',
+        orientation: 'square',
+        focus: '50% 40%',
+      },
+    ],
   },
   {
     slug: 'portfolio-shots',
@@ -333,9 +427,9 @@ export const projects: Project[] = [
 
 /** Curated images for the home page "Selected Work" grid, in display order. */
 export const selectedWork: { project: string; photo: string }[] = [
-  { project: 'portfolio-shots', photo: 'portfolio-shots-1' },
   { project: 'lab-74-runway', photo: 'lab-74-runway-1' },
-  { project: 'destin-conrad-nervous', photo: 'destin-conrad-nervous-1' },
+  { project: 'blrd-streetwear', photo: 'blrd-streetwear-2' },
+  { project: 'gap-campaign', photo: 'gap-campaign-4' },
   { project: 'zernell-gillie-fragrances', photo: 'zernell-gillie-fragrances-1' },
   { project: 'riot-games', photo: 'riot-games-1' },
 ]
