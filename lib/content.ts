@@ -637,7 +637,7 @@ export const projects: Project[] = [
       },
       {
         id: 'santa-monica-2',
-        src: '/photos/santa-monica-02.jpeg',
+        src: '/photos/santa-monica-02b.jpeg',
         alt: 'Maria Williams reclining in shallow water in a gold bikini and pink crochet skirt',
         orientation: 'landscape',
         focus: '45% 55%',
@@ -719,7 +719,8 @@ export const selectedWork: { project: string; photo: string }[] = [
   { project: 'riot-games', photo: 'riot-games-1' },
   { project: 'blrd-streetwear', photo: 'blrd-streetwear-4' },
   { project: 'venice-beach', photo: 'venice-beach-5' },
-  ]
+  { project: 'santa-monica', photo: 'santa-monica-2' },
+]
 
 export const creditGroups: CreditGroup[] = [
   'Runway / Fashion / Commercial',
