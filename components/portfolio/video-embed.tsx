@@ -27,14 +27,15 @@ export function VideoEmbed({ video }: { video: ProjectVideo }) {
         style={{ aspectRatio: video.aspect }}
       >
         <video
-          src={video.src}
           poster={video.poster}
           controls
           playsInline
           preload="metadata"
           aria-label={video.title}
           className="block size-full object-cover"
-        />
+        >
+          <source src={video.src} type="video/mp4" />
+        </video>
       </div>
     )
   }

@@ -432,7 +432,7 @@ export const projects: Project[] = [
     categories: ['Film'],
     video: {
       provider: 'file',
-      src: '/videos/writerboy-film.mov',
+      src: '/videos/writerboy-film.mp4',
       poster: '/photos/writerboy-01.jpeg',
       title: 'Writerboy film on-set clip',
       aspect: '444 / 960',
