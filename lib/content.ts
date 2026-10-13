@@ -308,6 +308,27 @@ export const projects: Project[] = [
         orientation: 'portrait',
         focus: '50% 30%',
       },
+      {
+        id: 'riot-games-2',
+        src: '/photos/riot-02.jpeg',
+        alt: 'Maria Williams in a navy League of Legends Ahri tee against a pink backdrop',
+        orientation: 'square',
+        focus: '50% 30%',
+      },
+      {
+        id: 'riot-games-3',
+        src: '/photos/riot-03.jpeg',
+        alt: 'Group in League of Legends merch around a table at a pink Chibi café, Ahri Fox tee on the back',
+        orientation: 'landscape',
+        focus: '50% 50%',
+      },
+      {
+        id: 'riot-games-4',
+        src: '/photos/riot-04.jpeg',
+        alt: 'Maria Williams and friends in League of Legends hoodies and tees sharing drinks at the Chibi café',
+        orientation: 'landscape',
+        focus: '50% 50%',
+      },
     ],
   },
   {
