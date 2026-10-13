@@ -5,23 +5,29 @@ import { SectionLabel } from '@/components/section-label'
 import { getSelectedWork } from '@/lib/content'
 import { cn } from '@/lib/utils'
 
-const layout = [
-  'md:col-span-5 aspect-[4/5]',
-  'md:col-span-4 aspect-[4/5] md:mt-16',
-  'md:col-span-3 aspect-[3/4] md:self-end',
-  'md:col-span-3 aspect-square',
-  'md:col-span-4 aspect-[4/5] md:mt-16',
-  'md:col-span-5 aspect-[4/5]',
-  'md:col-span-3 aspect-[3/4]',
-  'md:col-span-3 aspect-[3/4] md:mt-12',
-  'md:col-span-3 aspect-[3/4]',
-  'md:col-span-3 aspect-[3/4] md:mt-12',
-  'sm:col-span-2 md:col-span-12 aspect-[4/3] md:aspect-[21/9]',
-]
+// Desktop rows: a 3-up hero row, then rows of 4. Each item's flex-grow equals its
+// aspect ratio, so every photo in a row renders at the exact same height.
+const ROW_SIZES = [3, 4]
+
+const ratio = { portrait: 4 / 5, square: 1, landscape: 4 / 3 } as const
+
+function chunkRows<T>(items: T[]) {
+  const rows: T[][] = []
+  let i = 0
+  let r = 0
+  while (i < items.length) {
+    const size = ROW_SIZES[Math.min(r, ROW_SIZES.length - 1)]
+    rows.push(items.slice(i, i + size))
+    i += size
+    r++
+  }
+  return rows
+}
 
 export function SelectedWork() {
   const items = getSelectedWork()
   if (items.length === 0) return null
+  const rows = chunkRows(items)
 
   return (
     <section aria-labelledby="selected-work" className="bg-card">
@@ -42,9 +48,22 @@ export function SelectedWork() {
           </Link>
         </div>
 
-        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-12 md:items-start md:gap-6">
-          {items.map(({ project, photo }, i) => (
-            <li key={photo.id} className={cn('relative', layout[i % layout.length])}>
+        <ul className="grid grid-flow-dense grid-cols-1 gap-4 sm:grid-cols-2 md:flex md:flex-col md:gap-6">
+          {rows.map((row, r) => (
+            <li key={r} className="contents md:flex md:gap-6">
+              <ul className="contents">
+          {row.map(({ project, photo }) => {
+            const orientation = photo.orientation ?? 'portrait'
+            const isLandscape = orientation === 'landscape'
+            return (
+            <li
+              key={photo.id}
+              style={{ '--ar': ratio[orientation] } as React.CSSProperties}
+              className={cn(
+                'relative md:aspect-(--ar) md:min-w-0 md:basis-0 md:grow-(--ar)',
+                isLandscape ? 'aspect-[4/3] sm:col-span-2' : 'aspect-[4/5]',
+              )}
+            >
               <Link
                 href={`/portfolio#${project.slug}`}
                 className="group absolute inset-0 block overflow-hidden bg-secondary"
@@ -65,6 +84,10 @@ export function SelectedWork() {
                 </span>
                 <span className="absolute inset-0 ring-0 ring-primary ring-inset transition-[box-shadow] group-hover:ring-2" aria-hidden />
               </Link>
+            </li>
+            )
+          })}
+              </ul>
             </li>
           ))}
         </ul>
