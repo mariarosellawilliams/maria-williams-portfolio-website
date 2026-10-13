@@ -504,7 +504,7 @@ export const projects: Project[] = [
     photos: [
       {
         id: 'rooftop-pool-1',
-        src: '/photos/rooftop-01.jpeg',
+        src: '/photos/rooftop-01b.jpeg',
         alt: 'Maria Williams reclining poolside in a tropical print bikini and sarong beside a vintage caution sign',
         orientation: 'portrait',
         focus: '35% 65%',
