@@ -315,6 +315,8 @@ export const projects: Project[] = [
     role: 'Model',
     creditGroup: 'Runway / Fashion / Commercial',
     categories: ['Fashion'],
+    links: [{ label: 'Watch on Instagram', href: 'https://www.instagram.com/reel/Da3x0OuolL-/' }],
+    video: { provider: 'instagram', id: 'Da3x0OuolL-', title: 'BLRD Streetwear campaign reel' },
     photos: [
       {
         id: 'blrd-streetwear-1',
