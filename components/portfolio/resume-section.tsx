@@ -15,7 +15,7 @@ function ResumeActions({ resume }: { resume: Resume }) {
       <div className="flex flex-col gap-3 sm:flex-row">
         <span aria-disabled="true" className={cn(buttonBase, 'cursor-not-allowed bg-muted text-muted-foreground')}>
           <ExternalLink className="size-4" aria-hidden />
-          Open Full Résumé
+          Open Full PDF
         </span>
         <span
           aria-disabled="true"
@@ -37,7 +37,7 @@ function ResumeActions({ resume }: { resume: Resume }) {
         className={cn(buttonBase, 'bg-primary text-primary-foreground hover:bg-foreground hover:text-background')}
       >
         <ExternalLink className="size-4" aria-hidden />
-        Open Full Résumé
+        Open Full PDF
         <span className="sr-only">(opens in a new tab)</span>
       </a>
       <a
@@ -53,6 +53,8 @@ function ResumeActions({ resume }: { resume: Resume }) {
 }
 
 function ResumePreview({ resume }: { resume: Resume }) {
+  const aspect = resume.orientation === 'landscape' ? 'aspect-[11/8.5]' : 'aspect-[8.5/11]'
+
   if (!resume.src) {
     return (
       <div className="flex aspect-[8.5/11] w-full flex-col items-center justify-center gap-4 border border-dashed border-primary/50 bg-secondary p-8 text-center">
@@ -69,10 +71,10 @@ function ResumePreview({ resume }: { resume: Resume }) {
     <div className="relative">
       <div className="absolute -bottom-3 -right-3 hidden h-full w-full border border-primary md:block" aria-hidden />
       <iframe
-        src={`${resume.src}#view=FitH&toolbar=0`}
+        src={`${resume.src}#view=${resume.orientation === 'landscape' ? 'Fit' : 'FitH'}&toolbar=0`}
         title={`${resume.heading} preview`}
         loading="lazy"
-        className="relative hidden aspect-[8.5/11] w-full border border-border bg-card md:block"
+        className={cn('relative hidden w-full border border-border bg-card md:block', aspect)}
       />
       <a
         href={resume.src}
@@ -97,12 +99,12 @@ export function ResumeSection() {
       <div className="mx-auto flex max-w-7xl flex-col gap-12 px-5 py-20 md:px-10 md:py-24 lg:flex-row lg:gap-16">
         <div className="flex flex-col gap-8 lg:sticky lg:top-28 lg:w-5/12 lg:self-start">
           <div className="flex flex-col gap-4">
-            <SectionLabel>Résumé</SectionLabel>
+            <SectionLabel>Résumé & Comp Card</SectionLabel>
             <h2 id="resume-title" className="font-serif text-5xl leading-none md:text-6xl">
-              {active.heading.replace(' Résumé', '')} <span className="italic text-primary">Résumé</span>
+              {active.title[0]} <span className="italic text-primary">{active.title[1]}</span>
             </h2>
             <p className="max-w-md leading-relaxed text-muted-foreground">
-              Review the full résumé below, open it in a new tab, or download a copy for your casting files.
+              Review the full PDF below, open it in a new tab, or download a copy for your casting files.
             </p>
           </div>
 

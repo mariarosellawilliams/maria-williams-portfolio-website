@@ -96,8 +96,11 @@ export type Resume = {
   id: string
   tab: string
   heading: string
+  /** The two-part display title, e.g. ['Modeling', 'Résumé'] — the second part is italicized. */
+  title: [string, string]
   src: string | null
   fileName: string
+  orientation?: 'portrait' | 'landscape'
 }
 
 export const resumes: Resume[] = [
@@ -105,6 +108,7 @@ export const resumes: Resume[] = [
     id: 'modeling',
     tab: 'Modeling',
     heading: 'Modeling Résumé',
+    title: ['Modeling', 'Résumé'],
     src: '/maria-williams-modeling-resume.pdf',
     fileName: 'Maria-Williams-Modeling-Resume.pdf',
   },
@@ -112,13 +116,28 @@ export const resumes: Resume[] = [
     id: 'professional',
     tab: 'Professional',
     heading: 'Professional Résumé',
+    title: ['Professional', 'Résumé'],
     src: '/maria-williams-professional-resume.pdf',
     fileName: 'Maria-Williams-Professional-Resume.pdf',
+  },
+  {
+    id: 'comp-card',
+    tab: 'Comp Card',
+    heading: 'Comp Card',
+    title: ['Comp', 'Card'],
+    src: '/maria-williams-comp-card.pdf',
+    fileName: 'Maria-Williams-Comp-Card.pdf',
+    orientation: 'landscape',
   },
 ]
 
 export const details: { label: string; value: string }[] = [
   { label: 'Height', value: `5'3"` },
+  { label: 'Waist', value: '25–26"' },
+  { label: 'Dress', value: '2' },
+  { label: 'Shoe', value: '5.5' },
+  { label: 'Hair', value: 'Dark Brown' },
+  { label: 'Eyes', value: 'Dark Brown' },
   { label: 'Age', value: '22' },
   { label: 'Base', value: 'Los Angeles, CA' },
   { label: 'Ethnicity', value: 'African American, White, and Choctaw Native American' },
