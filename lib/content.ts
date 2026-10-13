@@ -56,6 +56,7 @@ export type Project = {
 export type ProjectVideo =
   | { provider: 'youtube'; id: string; title: string }
   | { provider: 'instagram'; id: string; title: string }
+  | { provider: 'file'; src: string; poster?: string; title: string; aspect: string }
 
 export const profile = {
   name: 'Maria Williams',
@@ -429,14 +430,14 @@ export const projects: Project[] = [
     role: 'Background Actress',
     creditGroup: 'Music Video / Film',
     categories: ['Film'],
+    video: {
+      provider: 'file',
+      src: '/videos/writerboy-film.mov',
+      poster: '/photos/writerboy-01.jpeg',
+      title: 'Writerboy film on-set clip',
+      aspect: '444 / 960',
+    },
     photos: [
-      {
-        id: 'writerboy-film-1',
-        src: '/photos/writerboy-01.jpeg',
-  alt: 'On-set camera monitor framing an actress aiming two prop pistols in a hallway on the Writerboy film',
-  orientation: 'portrait',
-  focus: '50% 50%',
-  },
   {
   id: 'writerboy-film-2',
   src: '/photos/writerboy-02.jpeg',

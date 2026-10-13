@@ -20,6 +20,25 @@ export function VideoEmbed({ video }: { video: ProjectVideo }) {
     )
   }
 
+  if (video.provider === 'file') {
+    return (
+      <div
+        className="mx-auto w-full max-w-sm overflow-hidden border border-foreground/15 bg-secondary"
+        style={{ aspectRatio: video.aspect }}
+      >
+        <video
+          src={video.src}
+          poster={video.poster}
+          controls
+          playsInline
+          preload="metadata"
+          aria-label={video.title}
+          className="block size-full object-cover"
+        />
+      </div>
+    )
+  }
+
   return <YouTubePlayer id={video.id} title={video.title} />
 }
 
