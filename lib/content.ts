@@ -692,8 +692,8 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: 'after-dark',
-    title: 'After Dark',
+    slug: 'hollywood-nights',
+    title: 'Hollywood Nights',
     client: 'Personal portfolio',
     role: 'Streetwear & Lifestyle Model',
     creditGroup: 'Beauty / Brand',
@@ -701,14 +701,21 @@ export const projects: Project[] = [
     personal: true,
     photos: [
       {
-        id: 'after-dark-1',
-        src: '/photos/after-dark-01.jpeg',
-        alt: 'Maria Williams walking away down a lit city sidewalk at night in olive cargo pants, a studded belt, and blue heels',
+        id: 'hollywood-nights-1',
+        src: '/photos/hollywood-01.jpeg',
+        alt: 'Maria Williams on a Hollywood sidewalk at night in a faux fur vest, olive baggy jeans, a pink studded belt, and denim boots, looking to the side',
         orientation: 'portrait',
-        focus: '50% 40%',
+        focus: '50% 35%',
       },
       {
-        id: 'after-dark-2',
+        id: 'hollywood-nights-2',
+        src: '/photos/hollywood-02.jpeg',
+        alt: 'Maria Williams standing under palm trees with the lit Hollywood sign behind her, wearing a faux fur vest and olive baggy jeans',
+        orientation: 'portrait',
+        focus: '50% 35%',
+      },
+      {
+        id: 'hollywood-nights-3',
         src: '/photos/after-dark-02.jpeg',
         alt: 'Overhead shot of Maria Williams lying on a night sidewalk in a green denim buckle halter and studded belt, eyes closed',
         orientation: 'portrait',
