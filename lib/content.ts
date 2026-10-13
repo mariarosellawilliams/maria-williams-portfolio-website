@@ -664,6 +664,11 @@ export const projects: Project[] = [
     creditGroup: 'Beauty / Brand',
     categories: ['Editorial'],
     personal: true,
+    clips: [
+      { provider: 'file', src: '/videos/santa-monica-01.mp4', title: 'Santa Monica clip 1', aspect: '16 / 9' },
+      { provider: 'file', src: '/videos/santa-monica-02.mp4', title: 'Santa Monica clip 2', aspect: '16 / 9' },
+      { provider: 'file', src: '/videos/santa-monica-03.mp4', title: 'Santa Monica clip 3', aspect: '16 / 9' },
+    ],
     photos: [
       {
         id: 'santa-monica-1',
@@ -713,13 +718,6 @@ export const projects: Project[] = [
         alt: 'Low angle of Maria Williams lying in the surf as foam rolls in, gold bikini and pink crochet skirt',
         orientation: 'landscape',
         focus: '50% 50%',
-      },
-      {
-        id: 'santa-monica-8',
-        src: '/photos/santa-monica-02.jpeg',
-        alt: 'Wide shot of Maria Williams seated in the shallows under a big cloudy sky, beachfront towers behind',
-        orientation: 'landscape',
-        focus: '40% 55%',
       },
     ],
   },
