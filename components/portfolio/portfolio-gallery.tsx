@@ -97,21 +97,21 @@ export function PortfolioGallery({ projects }: { projects: Project[] }) {
               ))}
             </header>
 
+            {project.clips && project.clips.length > 0 && (
+              <ul className="flex flex-col gap-4 lg:w-8/12" aria-label={`${project.title} clips`}>
+                {project.clips.map((clip) => (
+                  <li key={clip.src}>
+                    <VideoEmbed video={clip} ambient />
+                  </li>
+                ))}
+              </ul>
+            )}
+
             {project.video && (
               <div className="lg:w-8/12">
-          <VideoEmbed video={project.video} />
-          </div>
-  )}
-
-  {project.clips && project.clips.length > 0 && (
-    <ul className="flex flex-col gap-4 lg:w-8/12">
-      {project.clips.map((clip) => (
-        <li key={clip.src}>
-          <VideoEmbed video={clip} />
-        </li>
-      ))}
-    </ul>
-  )}
+                <VideoEmbed video={project.video} />
+              </div>
+            )}
 
             {project.photos.length > 0 && (
             <ul className="columns-1 gap-4 sm:columns-2 lg:w-8/12">

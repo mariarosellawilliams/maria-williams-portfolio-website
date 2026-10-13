@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Play } from 'lucide-react'
 import type { ProjectVideo } from '@/lib/content'
 
-export function VideoEmbed({ video }: { video: ProjectVideo }) {
+export function VideoEmbed({ video, ambient = false }: { video: ProjectVideo; ambient?: boolean }) {
   if (video.provider === 'instagram') {
     return (
       <div className="mx-auto w-full max-w-md overflow-hidden border border-foreground/15 bg-secondary">
@@ -32,7 +32,10 @@ export function VideoEmbed({ video }: { video: ProjectVideo }) {
           poster={video.poster}
           controls
           playsInline
-          preload="metadata"
+          autoPlay={ambient}
+          muted={ambient}
+          loop={ambient}
+          preload={ambient ? 'auto' : 'metadata'}
           aria-label={video.title}
           className="block size-full object-cover"
         >
