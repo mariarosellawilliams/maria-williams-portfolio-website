@@ -391,6 +391,13 @@ export const projects: Project[] = [
         orientation: 'landscape',
         focus: '50% 35%',
       },
+      {
+        id: 'destin-conrad-nervous-5',
+        src: '/photos/nervous-05.jpeg',
+        alt: 'Maria Williams seated on a folding chair in a sunlit warehouse in a gold bikini top and pink ombré crochet pants on the Destin Conrad “Nervous” set',
+        orientation: 'portrait',
+        focus: '50% 40%',
+      },
     ],
   },
   {
@@ -720,7 +727,7 @@ export const selectedWork: { project: string; photo: string }[] = [
   { project: 'venice-beach', photo: 'venice-beach-1' },
   { project: 'riot-games', photo: 'riot-games-1' },
   { project: 'blrd-streetwear', photo: 'blrd-streetwear-4' },
-  { project: 'santa-monica', photo: 'santa-monica-2' },
+  { project: 'destin-conrad-nervous', photo: 'destin-conrad-nervous-5' },
   { project: 'venice-beach', photo: 'venice-beach-5' },
 ]
 
