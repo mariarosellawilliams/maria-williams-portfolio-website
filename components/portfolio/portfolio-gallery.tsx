@@ -12,15 +12,16 @@ const categoryOrder: Category[] = ['Editorial', 'Fashion', 'Runway', 'Commercial
 
 type Photo = Project['photos'][number]
 
-// A lone landscape among portraits leaves an empty hole in a two-column masonry,
-// so it is lifted to the top and spans both columns.
-function orderForLayout(photos: Photo[]): { photo: Photo; wide: boolean }[] {
+// Photos sit in a two-column grid where same-shape photos pair up side by side.
+// Whenever a shape has an odd count, its first photo spans both columns so no row is left with a hole.
+function layoutPhotos(photos: Photo[]): { photo: Photo; wide: boolean }[] {
+  if (photos.length === 1) return [{ photo: photos[0], wide: true }]
   const landscapes = photos.filter((p) => p.orientation === 'landscape')
   const others = photos.filter((p) => p.orientation !== 'landscape')
-  if (landscapes.length === 1 && others.length >= 2 && others.length % 2 === 0) {
-    return [{ photo: landscapes[0], wide: true }, ...others.map((photo) => ({ photo, wide: false }))]
-  }
-  return photos.map((photo) => ({ photo, wide: false }))
+  const wideIds = new Set<string>()
+  if (landscapes.length % 2 === 1) wideIds.add(landscapes[0].id)
+  if (others.length % 2 === 1) wideIds.add(others[0].id)
+  return photos.map((photo) => ({ photo, wide: wideIds.has(photo.id) }))
 }
 
 export function PortfolioGallery({ projects }: { projects: Project[] }) {
@@ -97,46 +98,44 @@ export function PortfolioGallery({ projects }: { projects: Project[] }) {
               ))}
             </header>
 
-            {project.clips && project.clips.length > 0 && (
-              <ul className="flex flex-col gap-4 lg:w-8/12" aria-label={`${project.title} clips`}>
-                {project.clips.map((clip) => (
-                  <li key={clip.src}>
-                    <VideoEmbed video={clip} ambient />
-                  </li>
-                ))}
-              </ul>
-            )}
+            <div className="flex min-w-0 flex-col gap-4 lg:w-8/12 lg:shrink-0">
+              {project.clips && project.clips.length > 0 && (
+                <ul className="flex flex-col gap-4" aria-label={`${project.title} clips`}>
+                  {project.clips.map((clip) => (
+                    <li key={clip.src}>
+                      <VideoEmbed video={clip} ambient />
+                    </li>
+                  ))}
+                </ul>
+              )}
 
-            {project.video && (
-              <div className="lg:w-8/12">
-                <VideoEmbed video={project.video} />
-              </div>
-            )}
+              {project.video && <VideoEmbed video={project.video} />}
 
-            {project.photos.length > 0 && (
-            <ul className="columns-1 gap-4 sm:columns-2 lg:w-8/12">
-              {orderForLayout(project.photos).map(({ photo, wide }) => {
-                const index = items.findIndex((it) => it.photo.id === photo.id)
-                return (
-                  <li key={photo.id} className={cn('mb-4 break-inside-avoid', wide && 'sm:[column-span:all]')}>
-                    <button
-                      type="button"
-                      onClick={() => setActiveIndex(index)}
-                      className={cn('group relative block w-full overflow-hidden bg-secondary', aspectClass[photo.orientation])}
-                    >
-                      <PhotoFrame
-                        photo={photo}
-                        sizes="(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw"
-                        className="transition-transform duration-700 group-hover:scale-[1.03]"
-                      />
-                      <span className="absolute inset-0 ring-primary ring-inset transition-[box-shadow] group-hover:ring-2" aria-hidden />
-                      <span className="sr-only">Open {photo.alt} in image viewer</span>
-                    </button>
-                  </li>
-                )
-              })}
-            </ul>
-            )}
+              {project.photos.length > 0 && (
+                <ul className="grid grid-flow-row-dense grid-cols-1 gap-4 sm:grid-cols-2">
+                  {layoutPhotos(project.photos).map(({ photo, wide }) => {
+                    const index = items.findIndex((it) => it.photo.id === photo.id)
+                    return (
+                      <li key={photo.id} className={cn(wide && 'sm:col-span-2')}>
+                        <button
+                          type="button"
+                          onClick={() => setActiveIndex(index)}
+                          className={cn('group relative block w-full overflow-hidden bg-secondary', aspectClass[photo.orientation])}
+                        >
+                          <PhotoFrame
+                            photo={photo}
+                            sizes={wide ? '(min-width: 1024px) 60vw, 100vw' : '(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw'}
+                            className="transition-transform duration-700 group-hover:scale-[1.03]"
+                          />
+                          <span className="absolute inset-0 ring-primary ring-inset transition-[box-shadow] group-hover:ring-2" aria-hidden />
+                          <span className="sr-only">Open {photo.alt} in image viewer</span>
+                        </button>
+                      </li>
+                    )
+                  })}
+                </ul>
+              )}
+            </div>
           </article>
         ))}
       </div>

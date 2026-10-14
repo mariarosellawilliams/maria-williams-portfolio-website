@@ -8,14 +8,17 @@ export function VideoEmbed({ video, ambient = false }: { video: ProjectVideo; am
   if (video.provider === 'instagram') {
     return (
       <div className="mx-auto w-full max-w-md overflow-hidden border border-foreground/15 bg-secondary">
-        <iframe
-          src={`https://www.instagram.com/reel/${video.id}/embed/`}
-          title={video.title}
-          loading="lazy"
-          allow="autoplay; encrypted-media; picture-in-picture; clipboard-write"
-          allowFullScreen
-          className="block h-[640px] w-full border-0"
-        />
+        {/* Instagram's embed is a 3:4 media area plus ~205px of fixed chrome, so height must track width */}
+        <div className="relative" style={{ paddingBottom: 'calc(75% + 206px)' }}>
+          <iframe
+            src={`https://www.instagram.com/reel/${video.id}/embed/`}
+            title={video.title}
+            loading="lazy"
+            allow="autoplay; encrypted-media; picture-in-picture; clipboard-write"
+            allowFullScreen
+            className="absolute inset-0 block size-full border-0"
+          />
+        </div>
       </div>
     )
   }
