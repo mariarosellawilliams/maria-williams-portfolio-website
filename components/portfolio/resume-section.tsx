@@ -67,6 +67,33 @@ function ResumePreview({ resume }: { resume: Resume }) {
     )
   }
 
+  if (resume.pages?.length) {
+    return (
+      <div className="relative">
+        <div className="absolute -bottom-3 -right-3 hidden h-full w-full border border-primary md:block" aria-hidden />
+        <a
+          href={resume.src}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative flex flex-col gap-2 border border-border bg-card"
+        >
+          <span className="sr-only">Open {resume.heading} PDF (opens in a new tab)</span>
+          {resume.pages.map((page, i) => (
+            <img
+              key={page.src}
+              src={page.src}
+              width={page.width}
+              height={page.height}
+              loading={i === 0 ? 'eager' : 'lazy'}
+              alt={i === 0 ? `${resume.heading}, page ${i + 1}` : `Page ${i + 1}`}
+              className="h-auto w-full"
+            />
+          ))}
+        </a>
+      </div>
+    )
+  }
+
   return (
     <div className="relative">
       <div className="absolute -bottom-3 -right-3 hidden h-full w-full border border-primary md:block" aria-hidden />

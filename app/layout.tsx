@@ -14,11 +14,11 @@ export const metadata: Metadata = {
     template: '%s — Maria Williams',
   },
   description:
-    'Maria Williams is a Los Angeles-based model, dancer, and creative talent working across fashion, beauty, runway, commercial campaigns, and music videos. Portfolio, credits, and booking inquiries.',
+    'Maria Williams is a Los Angeles-based model and creative talent working across fashion, beauty, runway, and commercial campaigns, with background dance and acting credits in music videos and film. Portfolio, credits, and booking inquiries.',
   generator: 'v0.app',
   openGraph: {
     title: 'Maria Williams — Model',
-    description: 'Los Angeles-based model, dancer, and creative talent. Portfolio, credits, and bookings.',
+    description: 'Los Angeles-based model and creative talent. Portfolio, credits, and bookings.',
     type: 'website',
   },
   icons: {

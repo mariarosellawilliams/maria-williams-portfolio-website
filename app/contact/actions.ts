@@ -1,5 +1,6 @@
 'use server'
 
+import nodemailer from 'nodemailer'
 import { Resend } from 'resend'
 import { z } from 'zod'
 import { profile } from '@/lib/content'
@@ -27,6 +28,10 @@ const schema = z
     path: ['dateEnd'],
     message: 'The end date should be on or after the start date.',
   })
+
+// While using the onboarding@resend.dev sender, the inbox must match the owner of whichever Resend account the key belongs to.
+const BOOKINGS_KEY = process.env.RESEND_BOOKINGS_API_KEY
+const INQUIRY_INBOX = BOOKINGS_KEY ? 'mariarosella.bookings@gmail.com' : 'mariawil@usc.edu'
 
 const escape = (s: string) =>
   s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!)
@@ -62,9 +67,8 @@ export async function sendBookingInquiry(_prev: BookingState, formData: FormData
     return { status: 'error', message: 'Please correct the highlighted fields.', fieldErrors, values }
   }
 
-  const apiKey = process.env.RESEND_API_KEY
-  const domain = process.env.RESEND_EMAIL_DOMAIN
-  if (!apiKey || !domain) {
+  const apiKey = BOOKINGS_KEY || process.env.RESEND_API_KEY
+  if (!apiKey) {
     return {
       status: 'error',
       message: `Online inquiries are temporarily unavailable. Please email ${profile.email} directly.`,
@@ -108,8 +112,9 @@ export async function sendBookingInquiry(_prev: BookingState, formData: FormData
   const resend = new Resend(apiKey)
   const { error } = await resend.emails.send(
     {
-      from: `Maria Williams Portfolio <bookings@${domain}>`,
-      to: [profile.email],
+      // Resend's shared test sender needs no verified domain, but can only deliver to the account owner's address.
+      from: 'Maria Williams Portfolio <onboarding@resend.dev>',
+      to: [INQUIRY_INBOX],
       replyTo: d.email,
       subject: `Booking inquiry: ${d.projectType} — ${d.name}`,
       text,
@@ -127,5 +132,41 @@ export async function sendBookingInquiry(_prev: BookingState, formData: FormData
     }
   }
 
+  await sendAutoReply(d.name, d.email, d.projectType)
+
   return { status: 'success', message: 'Thank you — your inquiry has been delivered.' }
+}
+
+// Resend's shared onboarding@resend.dev sender cannot email visitors, so the auto-reply goes out
+// through the bookings Gmail account instead. It stays off until the Gmail app password is set.
+const GMAIL_APP_PASSWORD = process.env.GMAIL_APP_PASSWORD?.replace(/\s/g, '')
+const AUTO_REPLY_FROM = 'mariarosella.bookings@gmail.com'
+
+async function sendAutoReply(name: string, email: string, projectType: string) {
+  if (!GMAIL_APP_PASSWORD) return
+  const firstName = name.split(' ')[0]
+  const text = `Hi ${firstName},\n\nThank you for reaching out about your ${projectType.toLowerCase()} project. Your inquiry has been received, and Maria will get back to you within 48 hours.\n\nWarmly,\nMaria Rosella Williams\n${INQUIRY_INBOX}`
+  const html = `
+    <div style="font-family:Arial,sans-serif;color:#23201f;max-width:560px;line-height:1.6">
+      <p>Hi ${escape(firstName)},</p>
+      <p>Thank you for reaching out about your ${escape(projectType.toLowerCase())} project. Your inquiry has been received, and Maria will get back to you within 48 hours.</p>
+      <p style="margin-top:28px">Warmly,<br/><span style="color:#e60073">Maria Rosella Williams</span><br/>${INQUIRY_INBOX}</p>
+    </div>`
+
+  try {
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: { user: AUTO_REPLY_FROM, pass: GMAIL_APP_PASSWORD },
+    })
+    await transporter.sendMail({
+      from: `Maria Williams <${AUTO_REPLY_FROM}>`,
+      to: email,
+      subject: 'Thank you for your inquiry — Maria Williams',
+      text,
+      html,
+    })
+  } catch (error) {
+    // The inquiry itself already went through, so a failed courtesy reply should not show the visitor an error.
+    console.error('[booking] Auto-reply failed:', error instanceof Error ? error.message : error)
+  }
 }

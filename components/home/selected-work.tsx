@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import { PhotoFrame } from '@/components/photo-frame'
-import { SectionLabel } from '@/components/section-label'
 import { getSelectedWork } from '@/lib/content'
 import { cn } from '@/lib/utils'
 
@@ -34,7 +33,6 @@ export function SelectedWork() {
       <div className="mx-auto flex max-w-7xl flex-col gap-12 px-5 py-20 md:px-10 md:py-28">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="flex flex-col gap-4">
-            <SectionLabel>Selected Work</SectionLabel>
             <h2 id="selected-work" className="font-serif text-5xl leading-none md:text-6xl text-balance">
               In frame <span className="italic text-primary">&amp;</span> in motion
             </h2>

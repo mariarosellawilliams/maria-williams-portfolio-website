@@ -8,7 +8,7 @@ export function About() {
         <div className="flex flex-col gap-4 lg:w-5/12">
           <SectionLabel>About Maria</SectionLabel>
           <h2 id="about" className="font-serif text-5xl leading-[0.95] md:text-6xl text-balance">
-            Model, dancer <span className="italic text-primary">&amp;</span> creative talent
+            Model <span className="italic text-primary">&amp;</span> creative talent
           </h2>
         </div>
         <div className="flex flex-col gap-10 lg:w-7/12">
@@ -25,10 +25,6 @@ export function About() {
             <div className="flex flex-col gap-1">
               <dt className="text-[11px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">Availability</dt>
               <dd className="font-serif text-xl">Travel-ready</dd>
-            </div>
-            <div className="flex flex-col gap-1">
-              <dt className="text-[11px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">Training</dt>
-              <dd className="font-serif text-xl">USC Kaufman</dd>
             </div>
             <div className="flex flex-col gap-1">
               <dt className="text-[11px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">Representation</dt>

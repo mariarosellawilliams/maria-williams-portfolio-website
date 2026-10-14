@@ -64,11 +64,6 @@ export function Hero() {
                   priority={index === 0}
                   className="transition-transform duration-700 group-hover:scale-[1.03]"
                 />
-                {photo.caption ? (
-                  <figcaption className="absolute bottom-3 left-3 bg-background/85 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-foreground backdrop-blur-sm">
-                    {photo.caption}
-                  </figcaption>
-                ) : null}
               </figure>
             ))}
           </div>

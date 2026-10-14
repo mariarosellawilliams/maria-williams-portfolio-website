@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -13,14 +13,53 @@ const nav = [
   { href: '/contact', label: 'Contact' },
 ]
 
-function isActive(href: string, pathname: string) {
-  if (href.includes('#')) return false
+function isActive(href: string, pathname: string, inResume: boolean) {
+  if (href === '/portfolio#resume') return pathname === '/portfolio' && inResume
+  if (href === '/portfolio') return pathname.startsWith('/portfolio') && !inResume
   return href === '/' ? pathname === '/' : pathname.startsWith(href)
+}
+
+function useInResumeSection(pathname: string) {
+  const [inResume, setInResume] = useState(false)
+
+  useEffect(() => {
+    if (pathname !== '/portfolio') {
+      setInResume(false)
+      return
+    }
+
+    let frame = 0
+    const update = () => {
+      cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(() => {
+        const section = document.getElementById('resume')
+        if (!section) return setInResume(false)
+        const rect = section.getBoundingClientRect()
+        const line = window.innerHeight * 0.4
+        const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4
+        setInResume((rect.top <= line && rect.bottom > line) || (atBottom && rect.top < window.innerHeight))
+      })
+    }
+
+    update()
+    window.addEventListener('scroll', update, { passive: true })
+    window.addEventListener('resize', update)
+    window.addEventListener('hashchange', update)
+    return () => {
+      cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', update)
+      window.removeEventListener('resize', update)
+      window.removeEventListener('hashchange', update)
+    }
+  }, [pathname])
+
+  return inResume
 }
 
 export function SiteHeader() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const inResume = useInResumeSection(pathname)
 
   return (
     <header className="sticky top-0 z-40 border-b bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/80">
@@ -28,22 +67,22 @@ export function SiteHeader() {
         <Link
           href="/"
           onClick={() => setOpen(false)}
-          className="font-serif text-xl tracking-tight md:text-2xl"
+          className="shrink-0 whitespace-nowrap font-serif text-xl tracking-tight md:text-2xl"
           aria-label="Maria Williams — home"
         >
           Maria <span className="italic text-primary">Williams</span>
         </Link>
 
-        <nav aria-label="Main" className="hidden items-center gap-8 md:flex">
+        <nav aria-label="Main" className="hidden items-center gap-6 md:flex lg:gap-8">
           {nav.map((item) => {
-            const active = isActive(item.href, pathname)
+            const active = isActive(item.href, pathname, inResume)
             return (
               <Link
                 key={item.href}
                 href={item.href}
                 aria-current={active ? 'page' : undefined}
                 className={cn(
-                  'relative text-xs font-semibold uppercase tracking-[0.2em] transition-colors hover:text-primary',
+                  'relative whitespace-nowrap text-xs font-semibold uppercase tracking-[0.14em] transition-colors hover:text-primary lg:tracking-[0.2em]',
                   active && 'text-primary after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-full after:bg-primary',
                 )}
               >
@@ -53,7 +92,7 @@ export function SiteHeader() {
           })}
           <Link
             href="/contact"
-            className="bg-primary px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary-foreground transition-colors hover:bg-foreground"
+            className="whitespace-nowrap bg-primary px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-primary-foreground transition-colors hover:bg-foreground lg:px-5 lg:tracking-[0.2em]"
           >
             Booking Inquiries
           </Link>
@@ -78,7 +117,7 @@ export function SiteHeader() {
           className="flex flex-col gap-1 border-t bg-background px-5 pb-8 pt-4 motion-safe:animate-in motion-safe:fade-in md:hidden"
         >
           {nav.map((item) => {
-            const active = isActive(item.href, pathname)
+            const active = isActive(item.href, pathname, inResume)
             return (
               <Link
                 key={item.href}

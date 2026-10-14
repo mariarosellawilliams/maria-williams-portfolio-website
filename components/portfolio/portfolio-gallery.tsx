@@ -97,6 +97,16 @@ export function PortfolioGallery({ projects }: { projects: Project[] }) {
               ))}
             </header>
 
+            {project.clips && project.clips.length > 0 && (
+              <ul className="flex flex-col gap-4 lg:w-8/12" aria-label={`${project.title} clips`}>
+                {project.clips.map((clip) => (
+                  <li key={clip.src}>
+                    <VideoEmbed video={clip} ambient />
+                  </li>
+                ))}
+              </ul>
+            )}
+
             {project.video && (
               <div className="lg:w-8/12">
                 <VideoEmbed video={project.video} />
