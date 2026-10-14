@@ -28,8 +28,9 @@ const schema = z
     message: 'The end date should be on or after the start date.',
   })
 
-// Must match the Resend account owner's email while using the onboarding@resend.dev sender.
-const INQUIRY_INBOX = 'mariawil@usc.edu'
+// While using the onboarding@resend.dev sender, the inbox must match the owner of whichever Resend account the key belongs to.
+const BOOKINGS_KEY = process.env.RESEND_BOOKINGS_API_KEY
+const INQUIRY_INBOX = BOOKINGS_KEY ? 'mariarosella.bookings@gmail.com' : 'mariawil@usc.edu'
 
 const escape = (s: string) =>
   s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!)
@@ -65,7 +66,7 @@ export async function sendBookingInquiry(_prev: BookingState, formData: FormData
     return { status: 'error', message: 'Please correct the highlighted fields.', fieldErrors, values }
   }
 
-  const apiKey = process.env.RESEND_API_KEY
+  const apiKey = BOOKINGS_KEY || process.env.RESEND_API_KEY
   if (!apiKey) {
     return {
       status: 'error',
