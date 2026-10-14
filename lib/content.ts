@@ -334,7 +334,7 @@ export const projects: Project[] = [
       },
       {
         id: 'venice-beach-3',
-        src: '/photos/venice-03.jpeg',
+        src: '/photos/venice-03-v2.jpeg',
         alt: 'Maria Williams in a backless pink gown looking over her shoulder against a pink graffiti wall',
         orientation: 'portrait',
         focus: '45% 40%',
@@ -549,6 +549,13 @@ export const projects: Project[] = [
         alt: 'Maria Williams with hands on hips under a bright sun flare on a rooftop',
         orientation: 'portrait',
         focus: '50% 35%',
+      },
+      {
+        id: 'rooftop-pool-5',
+        src: '/photos/rooftop-05.jpeg',
+        alt: 'Maria Williams reclining on the edge of a rooftop pool beside a checkered tile wall and a 3½ ft depth marker',
+        orientation: 'portrait',
+        focus: '30% 55%',
       },
     ],
   },
@@ -778,15 +785,17 @@ export const projects: Project[] = [
 
 /** Curated images for the home page "Selected Work" grid, in display order. */
 export const selectedWork: { project: string; photo: string }[] = [
-  { project: 'studio-portrait', photo: 'studio-portrait-1' },
-  { project: 'lab-74-runway', photo: 'lab-74-runway-2' },
   { project: 'venice-beach', photo: 'venice-beach-3' },
   { project: 'zernell-gillie-fragrances', photo: 'zernell-gillie-fragrances-1' },
+  { project: 'lab-74-runway', photo: 'lab-74-runway-2' },
+  { project: 'studio-portrait', photo: 'studio-portrait-1' },
   { project: 'rooftop-pool', photo: 'rooftop-pool-2' },
   { project: 'venice-beach', photo: 'venice-beach-6' },
   { project: 'venice-beach', photo: 'venice-beach-1' },
   { project: 'riot-games', photo: 'riot-games-1' },
+  { project: 'rooftop-pool', photo: 'rooftop-pool-4' },
   { project: 'blrd-streetwear', photo: 'blrd-streetwear-4' },
+  { project: 'rooftop-pool', photo: 'rooftop-pool-5' },
   { project: 'destin-conrad-nervous', photo: 'destin-conrad-nervous-5' },
   { project: 'venice-beach', photo: 'venice-beach-5' },
 ]
