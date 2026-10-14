@@ -775,7 +775,7 @@ export const projects: Project[] = [
     slug: 'sony-door-3',
     title: 'Door 3',
     client: 'SONY Productions',
-    role: 'Dating Show Contestant',
+    role: 'Game Show Contestant',
     date: 'October 2026',
     creditGroup: 'Television',
     categories: ['Film'],
