@@ -32,7 +32,7 @@ export default function ContactPage() {
             <p className="max-w-md leading-relaxed text-pretty">{profile.representationNote}</p>
           </aside>
 
-          <div className="relative hidden aspect-[4/5] w-full max-w-md overflow-hidden bg-secondary sm:block">
+          <div className="relative hidden aspect-square w-full max-w-md overflow-hidden bg-secondary sm:block">
             <PhotoFrame photo={profile.contactPhoto} sizes="(min-width: 1024px) 35vw, 60vw" />
           </div>
 

@@ -76,6 +76,7 @@ export const profile = {
   bio: [
     'Maria Williams is a Los Angeles-based model, dancer, and creative talent working across fashion, beauty, fragrance, lifestyle, streetwear, runway, branded campaigns, music videos, and on-camera performance.',
     'Her movement background through the USC Kaufman School of Dance brings ease, control, and storytelling to every frame — on set, on the runway, and in front of the camera.',
+    'Alongside her creative work, Maria is a Computational Neuroscience major at USC. Studying how the brain perceives, moves, and feels shapes the way she approaches her craft — pairing an analytical understanding of the body and emotion with instinctive artistry, giving her work a rare, multidimensional depth.',
   ],
   /**
    * Social profiles. Set `href` to the full profile URL and `handle` to the
@@ -105,10 +106,10 @@ export const profile = {
   ] satisfies Photo[] as Photo[],
   contactPhoto: {
     id: 'contact',
-    src: null,
-    alt: 'Maria Williams on set',
-    orientation: 'portrait',
-    focus: '50% 30%',
+    src: '/photos/contact-blues.jpeg',
+    alt: 'Maria Williams in silhouetted profile holding a bottle of Blues fragrance against a glowing amber backdrop',
+    orientation: 'square',
+    focus: '50% 50%',
   } satisfies Photo as Photo,
 }
 
@@ -163,7 +164,7 @@ export const details: { label: string; value: string }[] = [
   { label: 'Shoe', value: '5.5' },
   { label: 'Hair', value: 'Dark Brown' },
   { label: 'Eyes', value: 'Dark Brown' },
-  { label: 'Age', value: '22' },
+  { label: 'Age', value: '23' },
   { label: 'Base', value: 'Los Angeles, CA' },
   { label: 'Ethnicity', value: 'African American, White, and Choctaw Native American' },
   { label: 'Travel', value: 'Available to travel for work' },

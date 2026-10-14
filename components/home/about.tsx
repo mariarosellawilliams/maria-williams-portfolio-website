@@ -27,10 +27,6 @@ export function About() {
               <dd className="font-serif text-xl">Travel-ready</dd>
             </div>
             <div className="flex flex-col gap-1">
-              <dt className="text-[11px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">Training</dt>
-              <dd className="font-serif text-xl">USC Kaufman</dd>
-            </div>
-            <div className="flex flex-col gap-1">
               <dt className="text-[11px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">Representation</dt>
               <dd className="font-serif text-xl text-primary">Seeking agency</dd>
             </div>
