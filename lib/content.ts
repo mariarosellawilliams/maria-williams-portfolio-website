@@ -334,7 +334,7 @@ export const projects: Project[] = [
       },
       {
         id: 'venice-beach-3',
-        src: '/photos/venice-03.jpeg',
+        src: '/photos/venice-03-v2.jpeg',
         alt: 'Maria Williams in a backless pink gown looking over her shoulder against a pink graffiti wall',
         orientation: 'portrait',
         focus: '45% 40%',
