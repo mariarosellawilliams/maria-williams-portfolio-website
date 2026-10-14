@@ -64,7 +64,7 @@ export const profile = {
   name: 'Maria Williams',
   fullName: 'Maria Rosella Williams',
   descriptor: 'Model',
-  titles: ['Model', 'Dancer', 'Creative Talent'],
+  titles: ['Model', 'Creative Talent'],
   location: 'Los Angeles, CA',
   email: 'mariarosella.bookings@gmail.com',
   phone: '601-951-9975',
@@ -74,7 +74,7 @@ export const profile = {
   representationNote:
     'Maria is currently independent and open to agency representation. Agents and scouts are welcome to reach out directly or use the inquiry form.',
   bio: [
-    'Maria Williams is a Los Angeles-based model, dancer, and creative talent working across fashion, beauty, fragrance, lifestyle, streetwear, runway, branded campaigns, music videos, and on-camera performance.',
+    'Maria Williams is a Los Angeles-based model and creative talent working across fashion, beauty, fragrance, lifestyle, streetwear, runway, and branded campaigns. Modeling is the heart of her work, and she has also appeared on screen as a background dancer and background actress in music videos and film.',
     'Her movement background through the USC Kaufman School of Dance brings ease, control, and storytelling to every frame — on set, on the runway, and in front of the camera.',
     'Alongside her creative work, Maria is a Computational Neuroscience major at USC. Studying how the brain perceives, moves, and feels shapes the way she approaches her craft — pairing an analytical understanding of the body and emotion with instinctive artistry, giving her work a rare, multidimensional depth.',
   ],
@@ -385,7 +385,7 @@ export const projects: Project[] = [
     slug: 'destin-conrad-nervous',
     title: '“Nervous”',
     client: 'Destin Conrad',
-    role: 'Music Video Talent & Dancer',
+    role: 'Music Video Talent & Background Dancer',
     creditGroup: 'Music Video / Film',
   categories: ['Music Videos'],
   featuredCredit: true,
