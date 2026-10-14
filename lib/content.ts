@@ -127,6 +127,8 @@ export type Resume = {
   src: string | null
   fileName: string
   orientation?: 'portrait' | 'landscape'
+  /** Page images rendered from the PDF, shown as the on-page preview. Regenerate if the PDF changes. */
+  pages?: { src: string; width: number; height: number }[]
 }
 
 export const resumes: Resume[] = [
@@ -137,6 +139,7 @@ export const resumes: Resume[] = [
     title: ['Modeling', 'Résumé'],
     src: '/maria-williams-modeling-resume.pdf',
     fileName: 'Maria-Williams-Modeling-Resume.pdf',
+    pages: [{ src: '/previews/maria-williams-modeling-resume-p1.webp', width: 1530, height: 1400 }],
   },
   {
     id: 'professional',
@@ -145,6 +148,10 @@ export const resumes: Resume[] = [
     title: ['Professional', 'Résumé'],
     src: '/maria-williams-professional-resume.pdf',
     fileName: 'Maria-Williams-Professional-Resume.pdf',
+    pages: [
+      { src: '/previews/maria-williams-professional-resume-p1.webp', width: 1530, height: 1980 },
+      { src: '/previews/maria-williams-professional-resume-p2.webp', width: 1530, height: 1980 },
+    ],
   },
   {
     id: 'comp-card',
@@ -154,6 +161,7 @@ export const resumes: Resume[] = [
     src: '/maria-williams-comp-card.pdf',
     fileName: 'Maria-Williams-Comp-Card.pdf',
     orientation: 'landscape',
+    pages: [{ src: '/previews/maria-williams-comp-card-p1.webp', width: 1600, height: 1200 }],
   },
 ]
 
