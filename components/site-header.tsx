@@ -67,13 +67,13 @@ export function SiteHeader() {
         <Link
           href="/"
           onClick={() => setOpen(false)}
-          className="font-serif text-xl tracking-tight md:text-2xl"
+          className="shrink-0 whitespace-nowrap font-serif text-xl tracking-tight md:text-2xl"
           aria-label="Maria Williams — home"
         >
           Maria <span className="italic text-primary">Williams</span>
         </Link>
 
-        <nav aria-label="Main" className="hidden items-center gap-8 md:flex">
+        <nav aria-label="Main" className="hidden items-center gap-6 md:flex lg:gap-8">
           {nav.map((item) => {
             const active = isActive(item.href, pathname, inResume)
             return (
@@ -82,7 +82,7 @@ export function SiteHeader() {
                 href={item.href}
                 aria-current={active ? 'page' : undefined}
                 className={cn(
-                  'relative text-xs font-semibold uppercase tracking-[0.2em] transition-colors hover:text-primary',
+                  'relative whitespace-nowrap text-xs font-semibold uppercase tracking-[0.14em] transition-colors hover:text-primary lg:tracking-[0.2em]',
                   active && 'text-primary after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-full after:bg-primary',
                 )}
               >
@@ -92,7 +92,7 @@ export function SiteHeader() {
           })}
           <Link
             href="/contact"
-            className="bg-primary px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary-foreground transition-colors hover:bg-foreground"
+            className="whitespace-nowrap bg-primary px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-primary-foreground transition-colors hover:bg-foreground lg:px-5 lg:tracking-[0.2em]"
           >
             Booking Inquiries
           </Link>

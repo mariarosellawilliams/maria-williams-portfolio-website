@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { Play } from 'lucide-react'
+import { useRef, useState } from 'react'
+import { Maximize2, Play } from 'lucide-react'
 import type { ProjectVideo } from '@/lib/content'
 
 export function VideoEmbed({ video, ambient = false }: { video: ProjectVideo; ambient?: boolean }) {
@@ -21,14 +21,35 @@ export function VideoEmbed({ video, ambient = false }: { video: ProjectVideo; am
   }
 
   if (video.provider === 'file') {
-    const [w, h] = video.aspect.split('/').map(Number)
-    const portrait = h > w
-    return (
-      <div
-        className={`mx-auto w-full overflow-hidden border border-foreground/15 bg-secondary ${portrait ? 'max-w-sm' : ''}`}
-        style={{ aspectRatio: video.aspect }}
-      >
+    return <FileVideo video={video} ambient={ambient} />
+  }
+
+  return <YouTubePlayer id={video.id} title={video.title} />
+}
+
+type WebkitVideo = HTMLVideoElement & { webkitEnterFullscreen?: () => void }
+
+function FileVideo({ video, ambient }: { video: Extract<ProjectVideo, { provider: 'file' }>; ambient: boolean }) {
+  const ref = useRef<WebkitVideo>(null)
+  const [w, h] = video.aspect.split('/').map(Number)
+  const portrait = h > w
+
+  const expand = () => {
+    const el = ref.current
+    if (!el) return
+    // iPhone Safari only supports fullscreen on the video element itself via this legacy API.
+    if (el.requestFullscreen) el.requestFullscreen().catch(() => el.webkitEnterFullscreen?.())
+    else el.webkitEnterFullscreen?.()
+    el.play().catch(() => {})
+  }
+
+  return (
+    <div
+      className={`group relative mx-auto w-full overflow-hidden border border-foreground/15 bg-secondary ${portrait ? 'max-w-sm' : ''}`}
+      style={{ aspectRatio: video.aspect }}
+    >
         <video
+          ref={ref}
           poster={video.poster}
           controls
           playsInline
@@ -42,11 +63,16 @@ export function VideoEmbed({ video, ambient = false }: { video: ProjectVideo; am
           {/* #t=0.1 makes Safari paint the first frame when there is no poster */}
           <source src={video.poster ? video.src : `${video.src}#t=0.1`} type="video/mp4" />
         </video>
-      </div>
-    )
-  }
-
-  return <YouTubePlayer id={video.id} title={video.title} />
+        <button
+          type="button"
+          onClick={expand}
+          className="absolute right-3 top-3 flex size-10 items-center justify-center bg-background/80 text-foreground backdrop-blur transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-primary"
+        >
+          <Maximize2 className="size-4" aria-hidden />
+          <span className="sr-only">Expand {video.title} to full screen</span>
+        </button>
+    </div>
+  )
 }
 
 function YouTubePlayer({ id, title }: { id: string; title: string }) {
