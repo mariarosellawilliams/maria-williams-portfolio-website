@@ -1,5 +1,6 @@
 'use server'
 
+import nodemailer from 'nodemailer'
 import { Resend } from 'resend'
 import { z } from 'zod'
 import { profile } from '@/lib/content'
@@ -131,17 +132,18 @@ export async function sendBookingInquiry(_prev: BookingState, formData: FormData
     }
   }
 
-  await sendAutoReply(resend, d.name, d.email, d.projectType, d.submissionId)
+  await sendAutoReply(d.name, d.email, d.projectType)
 
   return { status: 'success', message: 'Thank you — your inquiry has been delivered.' }
 }
 
-// Resend's shared onboarding@resend.dev sender cannot email visitors, so the auto-reply
-// only turns on once a verified-domain sender (e.g. bookings@mariarosellawilliams.com) is set.
-const AUTO_REPLY_FROM = process.env.BOOKINGS_FROM_EMAIL
+// Resend's shared onboarding@resend.dev sender cannot email visitors, so the auto-reply goes out
+// through the bookings Gmail account instead. It stays off until the Gmail app password is set.
+const GMAIL_APP_PASSWORD = process.env.GMAIL_APP_PASSWORD?.replace(/\s/g, '')
+const AUTO_REPLY_FROM = 'mariarosella.bookings@gmail.com'
 
-async function sendAutoReply(resend: Resend, name: string, email: string, projectType: string, submissionId: string) {
-  if (!AUTO_REPLY_FROM) return
+async function sendAutoReply(name: string, email: string, projectType: string) {
+  if (!GMAIL_APP_PASSWORD) return
   const firstName = name.split(' ')[0]
   const text = `Hi ${firstName},\n\nThank you for reaching out about your ${projectType.toLowerCase()} project. Your inquiry has been received, and Maria will get back to you within 48 hours.\n\nWarmly,\nMaria Rosella Williams\n${INQUIRY_INBOX}`
   const html = `
@@ -151,17 +153,20 @@ async function sendAutoReply(resend: Resend, name: string, email: string, projec
       <p style="margin-top:28px">Warmly,<br/><span style="color:#e60073">Maria Rosella Williams</span><br/>${INQUIRY_INBOX}</p>
     </div>`
 
-  const { error } = await resend.emails.send(
-    {
+  try {
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: { user: AUTO_REPLY_FROM, pass: GMAIL_APP_PASSWORD },
+    })
+    await transporter.sendMail({
       from: `Maria Williams <${AUTO_REPLY_FROM}>`,
-      to: [email],
-      replyTo: INQUIRY_INBOX,
+      to: email,
       subject: 'Thank you for your inquiry — Maria Williams',
       text,
       html,
-    },
-    { idempotencyKey: `booking-auto-reply/${submissionId}` },
-  )
-  // The inquiry itself already went through, so a failed courtesy reply should not show the visitor an error.
-  if (error) console.error('[booking] Auto-reply failed:', error.message)
+    })
+  } catch (error) {
+    // The inquiry itself already went through, so a failed courtesy reply should not show the visitor an error.
+    console.error('[booking] Auto-reply failed:', error instanceof Error ? error.message : error)
+  }
 }
