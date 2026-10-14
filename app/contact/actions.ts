@@ -28,6 +28,9 @@ const schema = z
     message: 'The end date should be on or after the start date.',
   })
 
+// Must match the Resend account owner's email while using the onboarding@resend.dev sender.
+const INQUIRY_INBOX = 'mariawil@usc.edu'
+
 const escape = (s: string) =>
   s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!)
 
@@ -63,8 +66,7 @@ export async function sendBookingInquiry(_prev: BookingState, formData: FormData
   }
 
   const apiKey = process.env.RESEND_API_KEY
-  const domain = process.env.RESEND_EMAIL_DOMAIN
-  if (!apiKey || !domain) {
+  if (!apiKey) {
     return {
       status: 'error',
       message: `Online inquiries are temporarily unavailable. Please email ${profile.email} directly.`,
@@ -108,8 +110,9 @@ export async function sendBookingInquiry(_prev: BookingState, formData: FormData
   const resend = new Resend(apiKey)
   const { error } = await resend.emails.send(
     {
-      from: `Maria Williams Portfolio <bookings@${domain}>`,
-      to: [profile.email],
+      // Resend's shared test sender needs no verified domain, but can only deliver to the account owner's address.
+      from: 'Maria Williams Portfolio <onboarding@resend.dev>',
+      to: [INQUIRY_INBOX],
       replyTo: d.email,
       subject: `Booking inquiry: ${d.projectType} — ${d.name}`,
       text,
