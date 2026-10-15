@@ -406,6 +406,9 @@ export const projects: Project[] = [
     creditGroup: 'Runway / Fashion / Commercial',
     categories: ['Runway', 'Fashion'],
     featuredCredit: true,
+    clips: [
+      { provider: 'file', src: '/videos/lab-74-walk.mp4', title: 'Lab 74 Fashion Show runway walk', aspect: '9 / 16' },
+    ],
     photos: [
       {
         id: 'lab-74-runway-1',
