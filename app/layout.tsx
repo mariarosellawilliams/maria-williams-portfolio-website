@@ -9,6 +9,7 @@ const bodoni = Bodoni_Moda({ subsets: ['latin'], style: ['normal', 'italic'], va
 const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope' })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://mariarosellawilliams.com'),
   title: {
     default: 'Maria Williams — Model | Los Angeles',
     template: '%s — Maria Williams',
