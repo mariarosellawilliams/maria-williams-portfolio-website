@@ -787,6 +787,9 @@ export const projects: Project[] = [
   categories: ['Film'],
   links: [{ label: 'Watch on YouTube', href: 'https://youtu.be/JRqCPsCab9A' }],
   video: { provider: 'youtube', id: 'JRqCPsCab9A', title: 'SONY Productions “Door 3” game show' },
+  clips: [
+  { provider: 'file', src: '/videos/door-3-01.mp4', title: 'SONY Productions “Door 3” clip featuring Maria Williams', aspect: '16 / 9' },
+  ],
   photos: [],
   },
   ]
