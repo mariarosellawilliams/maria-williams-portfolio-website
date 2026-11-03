@@ -716,6 +716,9 @@ export const projects: Project[] = [
     categories: ['Music Videos'],
     links: [{ label: 'Watch on YouTube', href: 'https://youtu.be/_Ez3CznkglI' }],
     video: { provider: 'youtube', id: '_Ez3CznkglI', title: 'Osita Davd “VEX” music video' },
+    clips: [
+      { provider: 'file', src: '/videos/vex-01.mp4', title: 'Osita Davd “VEX” clip featuring Maria Williams', aspect: '16 / 9' },
+    ],
     photos: [],
   },
   {
