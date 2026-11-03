@@ -716,6 +716,9 @@ export const projects: Project[] = [
     categories: ['Music Videos'],
     links: [{ label: 'Watch on YouTube', href: 'https://youtu.be/_Ez3CznkglI' }],
     video: { provider: 'youtube', id: '_Ez3CznkglI', title: 'Osita Davd “VEX” music video' },
+    clips: [
+      { provider: 'file', src: '/videos/vex-01.mp4', title: 'Osita Davd “VEX” clip featuring Maria Williams', aspect: '16 / 9' },
+    ],
     photos: [],
   },
   {
@@ -781,10 +784,12 @@ export const projects: Project[] = [
     role: 'Game Show Contestant',
     date: 'October 2026',
     creditGroup: 'Television',
-    categories: ['Film'],
-    photos: [],
+  categories: ['Film'],
+  links: [{ label: 'Watch on YouTube', href: 'https://youtu.be/JRqCPsCab9A' }],
+  video: { provider: 'youtube', id: 'JRqCPsCab9A', title: 'SONY Productions “Door 3” game show' },
+  photos: [],
   },
-]
+  ]
 
 /** Curated images for the home page "Selected Work" grid, in display order. */
 export const selectedWork: { project: string; photo: string }[] = [
